@@ -15,7 +15,7 @@ export default function PortfolioPage() {
       challenge: "Zero online presence",
       result: "300% increase in online orders",
       metric: "+300% Orders",
-      link: "https://example.com/mumbai-restaurant"
+      link: "https://venessadasilva.vercel.app/"
     },
     {
       industry: "Fluteon - Women's Fashion Brand ",
@@ -33,30 +33,7 @@ export default function PortfolioPage() {
       metric: "25x Calls",
       link: "https://vmservicecenter.com/"
     },
-    {
-      industry: "Delhi Retail Shop",
-      location: "Delhi",
-      challenge: "Low foot traffic",
-      result: "40% increase in store visits via Local SEO",
-      metric: "+40% Footfall",
-      link: "https://example.com/delhi-retail"
-    },
-    {
-      industry: "Bangalore Tech Service",
-      location: "Bangalore",
-      challenge: "High cost per lead",
-      result: "Reduced CPL by 60% with Google Ads optimization",
-      metric: "-60% CPL",
-      link: "https://example.com/bangalore-tech"
-    },
-    {
-      industry: "Hyderabad Gym",
-      location: "Hyderabad",
-      challenge: "Manual lead follow-ups losing sales",
-      result: "24/7 AI Automation captured 150+ new leads in month 1",
-      metric: "150+ Leads",
-      link: "https://example.com/hyderabad-gym"
-    }
+    
   ];
 
   return (

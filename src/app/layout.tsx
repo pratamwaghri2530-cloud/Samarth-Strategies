@@ -29,6 +29,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body
         className={`${plusJakartaSans.variable} ${inter.variable} font-sans antialiased bg-white text-foreground flex flex-col min-h-screen`}
+        suppressHydrationWarning
       >
         <Navbar />
         <main className="flex-grow">{children}</main>
