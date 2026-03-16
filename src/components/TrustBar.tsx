@@ -1,18 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
 
 export default function TrustBar() {
   const items = [
-    "Google Partner",
-    "Meta Partner",
-    "50+ Businesses Helped",
-    <span key="rating" className="flex items-center space-x-1">
-      <span>4.9</span>
-      <Star className="text-accent fill-accent w-4 h-4" />
-      <span>on Google</span>
-    </span>,
+    "3 Businesses Helped",
   ];
 
   return (

@@ -88,7 +88,7 @@ export default function Footer() {
             <h4 className="text-white font-heading font-bold mb-6 text-lg">Contact Us</h4>
             <ul className="space-y-4 text-gray-400">
               <li>hello@samarthstrategies.com</li>
-              <li>+91 90000 00000</li>
+              <li>+91 8850840056</li>
               <li className="pt-2 text-sm text-gray-500 font-medium tracking-wide uppercase">
                 Available IST & EST
               </li>

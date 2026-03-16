@@ -5,7 +5,7 @@ import Link from "next/link";
 import { MessageCircle, Calendar } from "lucide-react";
 
 export default function CTASection() {
-  const whatsappUrl = "https://wa.me/919000000000?text=Hi%20Samarth%20Strategies%20Team!%20I%20want%20to%20grow%20my%20business%20online.";
+  const whatsappUrl = "https://wa.me/918850840056?text=Hi%20Samarth%20Strategies%20Team!%20I%20want%20to%20grow%20my%20business%20online.";
   const calendlyUrl = "#"; // Placeholder calendly link
 
   return (

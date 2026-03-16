@@ -13,24 +13,24 @@ export default function PortfolioPage() {
       industry: "Vanessa da Silva - Yoga Studio",
       location: "Costa Rica",
       challenge: "Zero online presence",
-      result: "300% increase in online orders",
-      metric: "+300% Orders",
+      result: "Complete digital presence built from zero",
+      metric: "Website Live",
       link: "https://venessadasilva.vercel.app/"
     },
     {
-      industry: "Fluteon - Women's Fashion Brand ",
+      industry: "Fluteon - Women's Fashion Brand",
       location: "Mumbai",
-      challenge: "Low online presence",
-      result: "300% increase in online orders",
-      metric: "+300% Orders",
+      challenge: "No e-commerce channel for their products",
+      result: "Online store launched with first sales in week one",
+      metric: "Store Live",
       link: "https://fluteon.com/"
     },
     {
       industry: "VM Service Centre",
       location: "Mumbai",
-      challenge: "Low online presence",
-      result: "5x more appointment calls",
-      metric: "25x Calls",
+      challenge: "Customers couldn't find them online",
+      result: "Google Business profile optimised, calls up noticeably",
+      metric: "More Calls",
       link: "https://vmservicecenter.com/"
     },
     

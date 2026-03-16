@@ -42,9 +42,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="bg-gray-100 rounded-2xl aspect-video lg:aspect-square flex items-center justify-center border border-gray-200">
-               {/* Placeholder for Team Image */}
-               <span className="text-gray-400 font-medium font-heading tracking-wide uppercase">Team/Office Photo Here</span>
+            <div className="bg-gray-100 rounded-2xl aspect-video lg:aspect-square border border-gray-200">
             </div>
           </div>
 
