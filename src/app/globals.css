@@ -1,17 +1,337 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #5b21b6;
-  --color-accent: #f59e0b;
-  --color-background: #ffffff;
-  --color-foreground: #171717;
-  --color-gray-light: #f9fafb;
+  --color-primary: #6366F1;
+  --color-accent: #F97316;
+  --color-background: #0A0A0F;
+  --color-foreground: #F0EEE9;
+  --color-gray-light: #13131A;
   --font-sans: var(--font-inter), sans-serif;
-  --font-heading: var(--font-plus-jakarta-sans), sans-serif;
+  --font-heading: var(--font-syne), sans-serif;
 }
 
+/* ============================================================
+   BASE
+   ============================================================ */
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background-color: #0A0A0F;
+  color: #F0EEE9;
   font-family: var(--font-sans);
+}
+
+/* ============================================================
+   CURSOR GLOW — updated via JS mousemove on root element
+   ============================================================ */
+:root {
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}
+
+.cursor-glow-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: radial-gradient(
+    400px circle at var(--cursor-x) var(--cursor-y),
+    rgba(249, 115, 22, 0.10),
+    transparent 70%
+  );
+  will-change: background;
+  transition: background 0.05s ease;
+}
+
+/* ============================================================
+   SECTION DIVIDER
+   ============================================================ */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #F97316, #6366F1, transparent);
+  border: none;
+  margin: 0;
+  display: block;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  will-change: transform, opacity;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  will-change: transform, opacity;
+}
+.reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0s;    opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.1s;  opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.2s;  opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.3s;  opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   FLOATING PARTICLES (hero only)
+   ============================================================ */
+@keyframes float-up {
+  0%   { transform: translateY(0) scale(1);   opacity: 0.2; }
+  80%  { opacity: 0.15; }
+  100% { transform: translateY(-110vh) scale(0.4); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #F97316;
+  border-radius: 50%;
+  will-change: transform, opacity;
+  animation: float-up linear infinite;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  background: #F97316;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #F97316, #6366F1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+.btn-primary:hover::before  { opacity: 1; }
+.btn-primary:hover           { transform: scale(1.03); box-shadow: 0 0 24px rgba(249,115,22,0.35); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid #F97316;
+  color: #F0EEE9;
+  transition: background 0.3s ease, transform 0.3s ease;
+  will-change: transform;
+}
+.btn-ghost:hover {
+  background: rgba(249, 115, 22, 0.12);
+  transform: scale(1.03);
+}
+
+/* ============================================================
+   LOGO GLOW
+   ============================================================ */
+.logo-glow:hover {
+  text-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+  transition: text-shadow 0.3s ease;
+}
+
+/* ============================================================
+   NAVBAR SCROLLED STATE
+   ============================================================ */
+.navbar-scrolled {
+  background: rgba(10, 10, 15, 0.85) !important;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  position: relative;
+}
+.navbar-scrolled::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #F97316, #6366F1);
+  pointer-events: none;
+}
+
+/* ============================================================
+   TYPING INDICATOR (WhatsApp demo)
+   ============================================================ */
+@keyframes bounce-dot {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background: #9ca3af;
+  border-radius: 50%;
+  animation: bounce-dot 0.7s ease-in-out infinite;
+  will-change: transform;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.30s; }
+
+/* ============================================================
+   CHAT MESSAGE REVEAL
+   ============================================================ */
+.chat-msg {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  will-change: transform, opacity;
+}
+.chat-msg.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.chat-typing {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.chat-typing.visible {
+  opacity: 1;
+}
+.chat-fade-out {
+  opacity: 0 !important;
+  transition: opacity 0.8s ease !important;
+}
+
+/* ============================================================
+   TESTIMONIALS CAROUSEL
+   ============================================================ */
+@keyframes carousel-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.carousel-track {
+  display: flex;
+  animation: carousel-scroll 28s linear infinite;
+  will-change: transform;
+}
+.carousel-wrapper:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   SERVICE CARD GLOW
+   ============================================================ */
+.service-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: #F97316 !important;
+  box-shadow: 0 20px 60px -10px rgba(249, 115, 22, 0.25);
+}
+
+/* ============================================================
+   PORTFOLIO CARD
+   ============================================================ */
+.portfolio-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  overflow: hidden;
+}
+.portfolio-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.portfolio-card .card-overlay {
+  transition: background 0.3s ease;
+}
+.portfolio-card:hover .card-overlay {
+  background: rgba(0,0,0,0.4) !important;
+}
+.portfolio-card .card-arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.portfolio-card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   PULSING ONLINE DOT (contact page)
+   ============================================================ */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1);   opacity: 1;   }
+  50%       { transform: scale(1.6); opacity: 0.4; }
+}
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse-dot 1.8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ============================================================
+   GRADIENT TEXT ANIMATION (About page headline)
+   ============================================================ */
+@keyframes gradient-cycle {
+  0%   { color: #F0EEE9; }
+  33%  { color: #F97316; }
+  66%  { color: #6366F1; }
+  100% { color: #F0EEE9; }
+}
+.gradient-text-animate {
+  animation: gradient-cycle 4s ease-in-out infinite;
+  will-change: color;
+}
+
+/* ============================================================
+   FORM INPUT FOCUS (contact page)
+   ============================================================ */
+.dark-input {
+  background: #13131A;
+  border: 1px solid rgba(240, 238, 233, 0.15);
+  color: #F0EEE9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+.dark-input::placeholder { color: rgba(240, 238, 233, 0.35); }
+.dark-input:focus {
+  border-color: #F97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+/* ============================================================
+   HOW IT WORKS — gradient connecting line
+   ============================================================ */
+.gradient-line {
+  background: linear-gradient(90deg, #F97316, #6366F1);
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .cursor-glow-overlay { display: none; }
+  .carousel-track { animation: none; }
 }

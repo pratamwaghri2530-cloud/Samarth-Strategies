@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Instagram, Linkedin, MessageCircle } from "lucide-react";
 
@@ -5,107 +7,170 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0F0A1E] text-gray-300 pt-16 pb-8 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer
+      style={{
+        background: "#13131A",
+        borderTop: "none",
+        position: "relative",
+      }}
+    >
+      {/* Gradient top border */}
+      <div
+        style={{
+          height: "1px",
+          background: "linear-gradient(90deg, #F97316, #6366F1)",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Column 1: Brand & Social */}
+          {/* Column 1: Brand */}
           <div className="flex flex-col">
-            <Link href="/" className="font-heading font-bold text-2xl tracking-tight text-white mb-4 flex items-center">
-              <span className="text-accent mr-0.5">S</span>amarth<span className="ml-1 text-accent">S</span>trategies
+            <Link
+              href="/"
+              className="logo-glow font-heading font-bold text-2xl tracking-tight mb-4 inline-flex items-center"
+              style={{ color: "#F0EEE9" }}
+            >
+              <span style={{ color: "#F97316" }}>S</span>amarth
+              <span className="ml-1" style={{ color: "#F97316" }}>S</span>trategies
             </Link>
-            <p className="text-gray-400 mb-6 leading-relaxed max-w-xs">
+            <p
+              className="font-sans mb-6 leading-relaxed max-w-xs"
+              style={{ color: "rgba(240,238,233,0.45)", fontSize: "14px" }}
+            >
               Helping local businesses compete online — everywhere.
             </p>
-            <div className="flex items-center space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-colors">
-                <MessageCircle size={20} />
-              </a>
+            <div className="flex items-center gap-3">
+              {[
+                { Icon: Instagram, href: "#" },
+                { Icon: Linkedin,  href: "#" },
+                { Icon: MessageCircle, href: "#" },
+              ].map(({ Icon, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  className="flex items-center justify-center rounded-full transition-all duration-300"
+                  style={{
+                    width: "40px", height: "40px",
+                    background: "rgba(240,238,233,0.06)",
+                    color: "rgba(240,238,233,0.5)",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "#F97316";
+                    (e.currentTarget as HTMLElement).style.background = "rgba(249,115,22,0.12)";
+                    (e.currentTarget as HTMLElement).style.transform = "scale(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "rgba(240,238,233,0.5)";
+                    (e.currentTarget as HTMLElement).style.background = "rgba(240,238,233,0.06)";
+                    (e.currentTarget as HTMLElement).style.transform = "scale(1)";
+                  }}
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Column 2: Services */}
           <div>
-            <h4 className="text-white font-heading font-bold mb-6 text-lg">Services</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link href="/services/web-development" className="text-gray-400 hover:text-primary transition-colors">
-                  Web Development
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/ai-automations" className="text-gray-400 hover:text-primary transition-colors">
-                  AI Automations
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/google-ads" className="text-gray-400 hover:text-primary transition-colors">
-                  Google Ads
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/seo-optimization" className="text-gray-400 hover:text-primary transition-colors">
-                  SEO Optimization
-                </Link>
-              </li>
+            <h4 className="font-heading font-bold mb-6" style={{ color: "#F0EEE9", fontSize: "16px" }}>
+              Services
+            </h4>
+            <ul className="space-y-3">
+              {[
+                ["Web Development",  "/services/web-development"],
+                ["AI Automations",   "/services/ai-automations"],
+                ["Google Ads",       "/services/google-ads"],
+                ["SEO Optimization", "/services/seo-optimization"],
+              ].map(([label, href]) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="font-sans text-sm transition-colors duration-200"
+                    style={{ color: "rgba(240,238,233,0.45)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#F97316")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,238,233,0.45)")}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Column 3: Company */}
           <div>
-            <h4 className="text-white font-heading font-bold mb-6 text-lg">Company</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link href="/about" className="text-gray-400 hover:text-primary transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/portfolio" className="text-gray-400 hover:text-primary transition-colors">
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-gray-400 hover:text-primary transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-400 hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
+            <h4 className="font-heading font-bold mb-6" style={{ color: "#F0EEE9", fontSize: "16px" }}>
+              Company
+            </h4>
+            <ul className="space-y-3">
+              {[
+                ["About Us",  "/about"],
+                ["Portfolio", "/portfolio"],
+                ["Blog",      "/blog"],
+                ["Contact",   "/contact"],
+              ].map(([label, href]) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="font-sans text-sm transition-colors duration-200"
+                    style={{ color: "rgba(240,238,233,0.45)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#F97316")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,238,233,0.45)")}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 4: Contact Info */}
+          {/* Column 4: Contact */}
           <div>
-            <h4 className="text-white font-heading font-bold mb-6 text-lg">Contact Us</h4>
-            <ul className="space-y-4 text-gray-400">
+            <h4 className="font-heading font-bold mb-6" style={{ color: "#F0EEE9", fontSize: "16px" }}>
+              Contact Us
+            </h4>
+            <ul className="space-y-3 font-sans text-sm" style={{ color: "rgba(240,238,233,0.45)" }}>
               <li>hello@samarthstrategies.com</li>
               <li>+91 8850840056</li>
-              <li className="pt-2 text-sm text-gray-500 font-medium tracking-wide uppercase">
-                Available IST & EST
+              <li
+                className="pt-2 text-xs font-medium tracking-widest uppercase"
+                style={{ color: "rgba(240,238,233,0.3)" }}
+              >
+                Available IST &amp; EST
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>© {currentYear} Samarth Strategies. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms of Service
-            </Link>
+        {/* Bottom bar */}
+        <div
+          className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+          style={{ borderTop: "1px solid rgba(240,238,233,0.06)" }}
+        >
+          <p className="font-sans text-sm text-center" style={{ color: "rgba(240,238,233,0.3)" }}>
+            © {currentYear} Samarth Strategies. All rights reserved.
+          </p>
+          <p className="font-sans text-sm text-center" style={{ color: "rgba(240,238,233,0.3)" }}>
+            Built with ❤️ in Mumbai
+          </p>
+          <div className="flex gap-6">
+            {[
+              ["Privacy Policy", "/privacy"],
+              ["Terms of Service", "/terms"],
+            ].map(([label, href]) => (
+              <Link
+                key={label}
+                href={href}
+                className="font-sans text-sm transition-colors duration-200"
+                style={{ color: "rgba(240,238,233,0.3)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#F0EEE9")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,238,233,0.3)")}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

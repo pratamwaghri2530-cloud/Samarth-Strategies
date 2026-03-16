@@ -3,121 +3,206 @@ import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact Us | Samarth Strategies",
-  description: "Get in touch with Samarth Strategies for a free audit and consultation for your local business.",
+  description:
+    "Get in touch with Samarth Strategies for a free audit and consultation for your local business.",
 };
 
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-gray-light pt-32 pb-16 md:pt-40 md:pb-24 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
-            Let's Talk <span className="text-primary">Growth</span>
+      {/* Hero */}
+      <section
+        className="pt-36 pb-16 md:pt-48 md:pb-24 text-center"
+        style={{ background: "#0A0A0F", borderBottom: "1px solid rgba(240,238,233,0.06)" }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1
+            className="font-heading font-extrabold mb-6"
+            style={{ fontSize: "clamp(36px, 6vw, 64px)", color: "#F0EEE9", letterSpacing: "-0.02em" }}
+          >
+            Let&apos;s Talk{" "}
+            <span style={{ color: "#F97316" }}>Growth</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Ready to get more customers online? We're here to help. Reach out to us today for a free, no-obligation audit of your digital presence.
+          <p
+            className="font-sans leading-relaxed max-w-3xl mx-auto"
+            style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "rgba(240,238,233,0.65)" }}
+          >
+            Ready to get more customers online? We&apos;re here to help. Reach out for a free,
+            no-obligation audit of your digital presence.
           </p>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24" style={{ background: "#0A0A0F" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
+
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-heading font-bold text-primary mb-8">
+              <h2
+                className="font-heading font-bold mb-8"
+                style={{ fontSize: "28px", color: "#F97316" }}
+              >
                 Get in Touch
               </h2>
-              
+
               <div className="space-y-8">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0 mr-4">
-                    <Phone size={24} />
+                {[
+                  {
+                    Icon: Phone,
+                    title: "Phone",
+                    main: "+91 8850840056",
+                    sub: "Mon–Fri, 9am–6pm IST",
+                    color: "#F97316",
+                  },
+                  {
+                    Icon: Mail,
+                    title: "Email",
+                    main: "hello@samarthstrategies.com",
+                    sub: "We reply within 24 hours",
+                    color: "#6366F1",
+                  },
+                  {
+                    Icon: MessageCircle,
+                    title: "WhatsApp",
+                    main: "+91 8850840056",
+                    sub: "Click to chat instantly",
+                    subHref: "https://wa.me/918850840056",
+                    color: "#22c55e",
+                  },
+                  {
+                    Icon: MapPin,
+                    title: "Headquarters",
+                    main: "Mumbai, Maharashtra, India",
+                    sub: "Serving clients globally",
+                    color: "#F97316",
+                  },
+                ].map(({ Icon, title, main, sub, subHref, color }) => (
+                  <div key={title} className="flex items-start gap-4">
+                    <div
+                      className="flex-shrink-0 flex items-center justify-center rounded-full"
+                      style={{ width: "48px", height: "48px", background: `${color}18` }}
+                    >
+                      <Icon size={22} style={{ color }} />
+                    </div>
+                    <div>
+                      <h3
+                        className="font-heading font-bold mb-1"
+                        style={{ fontSize: "16px", color: "#F0EEE9" }}
+                      >
+                        {title}
+                      </h3>
+                      <p className="font-sans mb-1" style={{ color: "rgba(240,238,233,0.65)", fontSize: "15px" }}>
+                        {main}
+                      </p>
+                      {subHref ? (
+                        <a
+                          href={subHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-sans text-sm font-medium"
+                          style={{ color: "#22c55e" }}
+                        >
+                          {sub}
+                        </a>
+                      ) : title === "Phone" ? (
+                        <div className="flex items-center gap-2">
+                          <span className="pulse-dot" />
+                          <p className="font-sans text-xs uppercase tracking-widest" style={{ color: "rgba(240,238,233,0.4)" }}>
+                            {sub}
+                          </p>
+                        </div>
+                      ) : (
+                        <p className="font-sans text-xs uppercase tracking-widest" style={{ color: "rgba(240,238,233,0.4)" }}>
+                          {sub}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold font-heading text-foreground mb-1">Phone</h3>
-                    <p className="text-gray-600 mb-1">+91 90000 00000</p>
-                    <p className="text-sm text-gray-500 uppercase tracking-widest">Mon-Fri, 9am - 6pm IST</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0 mr-4">
-                    <Mail size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold font-heading text-foreground mb-1">Email</h3>
-                    <p className="text-gray-600 mb-1">hello@samarthstrategies.com</p>
-                    <p className="text-sm text-gray-500 uppercase tracking-widest">We reply within 24 hours</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-[#25D366]/10 rounded-full flex items-center justify-center text-[#25D366] shrink-0 mr-4">
-                    <MessageCircle size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold font-heading text-foreground mb-1">WhatsApp</h3>
-                    <p className="text-gray-600 mb-1">+91 90000 00000</p>
-                    <a href="https://wa.me/919000000000" target="_blank" rel="noopener noreferrer" className="text-sm text-[#25D366] font-semibold hover:underline">Click to chat instantly</a>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0 mr-4">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold font-heading text-foreground mb-1">Headquarters</h3>
-                    <p className="text-gray-600 mb-1">Mumbai, Maharashtra, India</p>
-                    <p className="text-sm text-gray-500 uppercase tracking-widest">Serving clients globally</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
+            <div
+              className="rounded-2xl p-8"
+              style={{ background: "#13131A", border: "1px solid rgba(240,238,233,0.08)" }}
+            >
+              <h2
+                className="font-heading font-bold mb-6"
+                style={{ fontSize: "22px", color: "#F0EEE9" }}
+              >
                 Send us a Message
               </h2>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                    <input type="text" id="firstName" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="John" />
+                    <label className="block font-sans text-sm font-medium mb-2" style={{ color: "rgba(240,238,233,0.6)" }}>
+                      First Name
+                    </label>
+                    <input
+                      type="text"
+                      className="dark-input w-full px-4 py-3 rounded-lg font-sans text-sm"
+                      placeholder="Rahul"
+                    />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                    <input type="text" id="lastName" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Doe" />
+                    <label className="block font-sans text-sm font-medium mb-2" style={{ color: "rgba(240,238,233,0.6)" }}>
+                      Last Name
+                    </label>
+                    <input
+                      type="text"
+                      className="dark-input w-full px-4 py-3 rounded-lg font-sans text-sm"
+                      placeholder="Sharma"
+                    />
                   </div>
                 </div>
-                
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                  <input type="email" id="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="john@company.com" />
+                  <label className="block font-sans text-sm font-medium mb-2" style={{ color: "rgba(240,238,233,0.6)" }}>
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    className="dark-input w-full px-4 py-3 rounded-lg font-sans text-sm"
+                    placeholder="rahul@yourbusiness.com"
+                  />
                 </div>
 
                 <div>
-                  <label htmlFor="business" className="block text-sm font-medium text-gray-700 mb-2">Business Type / Industry</label>
-                  <input type="text" id="business" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="e.g. Restaurant, Clinic, Retail" />
+                  <label className="block font-sans text-sm font-medium mb-2" style={{ color: "rgba(240,238,233,0.6)" }}>
+                    Business Type / Industry
+                  </label>
+                  <input
+                    type="text"
+                    className="dark-input w-full px-4 py-3 rounded-lg font-sans text-sm"
+                    placeholder="e.g. Restaurant, Clinic, Retail"
+                  />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">How can we help you grow?</label>
-                  <textarea id="message" rows={4} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none" placeholder="Tell us about your current digital presence and your goals..."></textarea>
+                  <label className="block font-sans text-sm font-medium mb-2" style={{ color: "rgba(240,238,233,0.6)" }}>
+                    How can we help you grow?
+                  </label>
+                  <textarea
+                    rows={4}
+                    className="dark-input w-full px-4 py-3 rounded-lg font-sans text-sm resize-none"
+                    placeholder="Tell us about your current digital presence and your goals..."
+                  />
                 </div>
 
-                <button type="button" className="w-full py-4 bg-primary hover:bg-indigo-700 text-white rounded-lg font-bold text-lg transition-colors shadow-md hover:shadow-lg">
+                <button
+                  type="button"
+                  className="btn-primary w-full py-4 rounded-lg font-sans font-medium tracking-[0.1em] uppercase text-sm"
+                >
                   Submit Request
                 </button>
-                <p className="text-xs text-center text-gray-500 mt-4">
+
+                <p className="font-sans text-xs text-center" style={{ color: "rgba(240,238,233,0.3)" }}>
                   By submitting this form, you agree to our privacy policy. We protect your data and never spam.
                 </p>
               </form>
             </div>
-            
           </div>
         </div>
       </section>

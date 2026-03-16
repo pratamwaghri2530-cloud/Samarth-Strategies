@@ -1,87 +1,116 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+const testimonials = [
+  {
+    name: "Ravi Sharma",
+    role: "Restaurant Owner",
+    location: "Mumbai",
+    content: "Samarth Strategies got us ranking on Google Maps within 6 weeks. Our walk-ins doubled.",
+    rating: 5,
+  },
+  {
+    name: "Priya Nair",
+    role: "Salon Owner",
+    location: "Pune",
+    content: "We were fully booked 3 weeks in advance after they ran our Google Ads. Best investment we made.",
+    rating: 5,
+  },
+  {
+    name: "James Mitchell",
+    role: "Clinic Owner",
+    location: "Austin TX",
+    content: "Professional team, clear communication, and real results. Our website traffic tripled in 3 months.",
+    rating: 5,
+  },
+];
+
+// Duplicate for infinite scroll
+const doubled = [...testimonials, ...testimonials];
 
 export default function Testimonials() {
-  const testimonials = [
-    {
-      name: "Ravi Sharma",
-      role: "Restaurant Owner",
-      location: "Mumbai",
-      content: "Samarth Strategies got us ranking on Google Maps within 6 weeks. Our walk-ins doubled.",
-      rating: 5,
-    },
-    {
-      name: "Priya Nair",
-      role: "Salon Owner",
-      location: "Pune",
-      content: "We were fully booked 3 weeks in advance after they ran our Google Ads. Best investment we made.",
-      rating: 5,
-    },
-    {
-      name: "James Mitchell",
-      role: "Clinic Owner",
-      location: "Austin TX",
-      content: "Professional team, clear communication, and real results. Our website traffic tripled in 3 months.",
-      rating: 5,
-    },
-  ];
-
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-primary mb-4">
+    <section className="py-20 md:py-32 reveal overflow-hidden" style={{ background: "#0A0A0F" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-14">
+        <div className="text-center">
+          <h2
+            className="font-heading font-bold mb-4"
+            style={{ fontSize: "clamp(28px, 5vw, 48px)", color: "#F0EEE9" }}
+          >
             What Our Clients Say
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what business owners have to say about working with us.
+          <p className="font-sans max-w-2xl mx-auto" style={{ color: "rgba(240,238,233,0.65)", fontSize: "18px" }}>
+            Don&apos;t just take our word for it. Here&apos;s what business owners say about working with us.
           </p>
-        </motion.div>
+        </div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100 flex flex-col h-full relative"
+      {/* Carousel */}
+      <div className="carousel-wrapper" style={{ overflow: "hidden" }}>
+        <div className="carousel-track" style={{ gap: "24px", padding: "12px 12px" }}>
+          {doubled.map((t, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 relative"
+              style={{
+                width: "380px",
+                background: "#13131A",
+                borderLeft: "4px solid #F97316",
+                borderRadius: "12px",
+                padding: "32px",
+              }}
             >
-              <Quote className="absolute top-6 right-6 w-12 h-12 text-primary/10 rotate-180" />
-              
-              <div className="flex space-x-1 mb-6">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                ))}
+              {/* Background quote mark */}
+              <div
+                className="absolute font-heading font-extrabold select-none pointer-events-none"
+                style={{
+                  fontSize: "120px",
+                  color: "rgba(249,115,22,0.08)",
+                  top: "-10px",
+                  left: "16px",
+                  lineHeight: 1,
+                  zIndex: 0,
+                }}
+              >
+                &ldquo;
               </div>
-              
-              <blockquote className="text-gray-700 text-lg leading-relaxed mb-8 flex-grow relative z-10 italic">
-                "{testimonial.content}"
-              </blockquote>
-              
-              <div className="mt-auto flex items-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-xl mr-4">
-                  {testimonial.name.charAt(0)}
+
+              <div className="relative z-10">
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(t.rating)].map((_, si) => (
+                    <span key={si} style={{ color: "#F97316", fontSize: "16px" }}>★</span>
+                  ))}
                 </div>
-                <div>
-                  <h4 className="font-heading font-bold text-foreground">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-sm text-gray-500">
-                    {testimonial.role}, {testimonial.location}
-                  </p>
+
+                <blockquote
+                  className="font-sans leading-relaxed mb-8 italic"
+                  style={{ fontSize: "16px", color: "rgba(240,238,233,0.75)" }}
+                >
+                  &ldquo;{t.content}&rdquo;
+                </blockquote>
+
+                <div className="flex items-center gap-3 mt-auto">
+                  <div
+                    className="flex items-center justify-center font-heading font-bold text-lg rounded-full flex-shrink-0"
+                    style={{
+                      width: "44px", height: "44px",
+                      background: "rgba(249,115,22,0.15)",
+                      color: "#F97316",
+                    }}
+                  >
+                    {t.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="font-heading font-bold" style={{ color: "#F0EEE9", fontSize: "15px" }}>
+                      {t.name}
+                    </h4>
+                    <p className="font-sans text-xs" style={{ color: "rgba(240,238,233,0.45)" }}>
+                      {t.role}, {t.location}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

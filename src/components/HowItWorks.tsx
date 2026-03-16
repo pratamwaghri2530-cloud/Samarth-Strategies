@@ -1,86 +1,98 @@
 "use client";
 
-import { motion } from "framer-motion";
+const steps = [
+  {
+    number: "01",
+    icon: "🔍",
+    title: "Free Audit",
+    description: "We analyze your current online presence (or lack of it)",
+  },
+  {
+    number: "02",
+    icon: "📋",
+    title: "Custom Strategy",
+    description: "We build a plan tailored to your business and budget",
+  },
+  {
+    number: "03",
+    icon: "🚀",
+    title: "Execute & Grow",
+    description: "We execute, track results, and scale what works",
+  },
+];
 
 export default function HowItWorks() {
-  const steps = [
-    {
-      number: "01",
-      icon: "🔍",
-      title: "Free Audit",
-      description: "We analyze your current online presence (or lack of it)",
-    },
-    {
-      number: "02",
-      icon: "📋",
-      title: "Custom Strategy",
-      description: "We build a plan tailored to your business and budget",
-    },
-    {
-      number: "03",
-      icon: "🚀",
-      title: "Execute & Grow",
-      description: "We execute, track results, and scale what works",
-    },
-  ];
-
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-20 md:py-32 reveal" style={{ background: "#0A0A0F" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-primary mb-4">
+        {/* Heading */}
+        <div className="text-center mb-20">
+          <h2
+            className="font-heading font-bold mb-4"
+            style={{ fontSize: "clamp(28px, 5vw, 48px)", color: "#F0EEE9" }}
+          >
             How It Works
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="font-sans max-w-2xl mx-auto" style={{ color: "rgba(240,238,233,0.65)", fontSize: "18px" }}>
             A simple, transparent process to take your business from offline to online success.
           </p>
-        </motion.div>
+        </div>
 
+        {/* Timeline */}
         <div className="relative">
-          {/* Connecting Line (Desktop only) */}
-          <div className="hidden md:block absolute top-[60px] left-[15%] right-[15%] h-[2px] bg-gray-200 z-0">
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
-              className="h-full bg-primary origin-left"
-            ></motion.div>
-          </div>
+          {/* Connecting gradient line (desktop) */}
+          <div
+            className="hidden md:block absolute h-[2px] gradient-line"
+            style={{ top: "52px", left: "calc(16.66% + 32px)", right: "calc(16.66% + 32px)", zIndex: 0 }}
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 relative z-10">
             {steps.map((step, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="flex flex-col items-center text-center group"
+                className="reveal flex flex-col items-center text-center relative"
+                style={{ transitionDelay: `${index * 0.15}s` }}
               >
-                {/* Step Number Circle */}
-                <div className="w-24 h-24 rounded-full bg-white border-4 border-gray-100 group-hover:border-primary shadow-sm flex items-center justify-center mb-6 transition-colors duration-300 relative">
-                  <span className="text-3xl font-heading font-bold text-primary">
-                    {step.number}
-                  </span>
-                  <div className="absolute -top-3 -right-3 w-10 h-10 bg-accent rounded-full flex items-center justify-center text-xl shadow-md transform group-hover:scale-110 transition-transform">
-                    {step.icon}
-                  </div>
+                {/* Large background number */}
+                <div
+                  className="absolute font-heading font-extrabold select-none pointer-events-none"
+                  style={{
+                    fontSize: "80px",
+                    color: "rgba(249,115,22,0.08)",
+                    top: "-20px",
+                    lineHeight: 1,
+                    zIndex: 0,
+                  }}
+                >
+                  {step.number}
                 </div>
 
-                <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
+                {/* Step circle */}
+                <div
+                  className="relative z-10 flex items-center justify-center rounded-full mb-6 transition-all duration-300"
+                  style={{
+                    width: "80px",
+                    height: "80px",
+                    background: "#13131A",
+                    border: "2px solid rgba(249,115,22,0.3)",
+                  }}
+                >
+                  <span style={{ fontSize: "28px" }}>{step.icon}</span>
+                </div>
+
+                <h3
+                  className="font-heading font-bold mb-3 relative z-10"
+                  style={{ fontSize: "22px", color: "#F0EEE9" }}
+                >
                   {step.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed max-w-xs mx-auto">
+                <p
+                  className="font-sans leading-relaxed max-w-xs relative z-10"
+                  style={{ color: "rgba(240,238,233,0.6)" }}
+                >
                   {step.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

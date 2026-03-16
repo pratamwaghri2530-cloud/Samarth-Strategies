@@ -1,32 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function TrustBar() {
-  const items = [
-    "3 Businesses Helped",
-  ];
+  const items = ["3 Businesses Helped", "100% Transparent", "24/7 AI Support"];
 
   return (
-    <section className="bg-gray-100 py-6 border-b border-gray-200">
+    <section
+      className="py-4 border-b"
+      style={{ background: "#13131A", borderColor: "rgba(240,238,233,0.06)" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-sm md:text-base font-medium text-gray-600"
-        >
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-2">
           {items.map((item, index) => (
-            <div key={index} className="flex items-center space-x-8">
-              <div className="flex items-center text-center">{item}</div>
-              {/* Add separator dot if not the last item */}
+            <div key={index} className="flex items-center gap-8">
+              <span
+                className="font-sans font-medium text-sm tracking-wide"
+                style={{ color: "rgba(240,238,233,0.5)" }}
+              >
+                {item}
+              </span>
               {index < items.length - 1 && (
-                <div className="hidden md:block w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                <div
+                  className="hidden md:block rounded-full"
+                  style={{ width: "4px", height: "4px", background: "#F97316", opacity: 0.4 }}
+                />
               )}
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

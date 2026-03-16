@@ -9,33 +9,36 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: "Services", href: "/services" },
+    { name: "Services",  href: "/services"  },
     { name: "Portfolio", href: "/portfolio" },
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "About",     href: "/about"     },
+    { name: "Blog",      href: "/blog"      },
+    { name: "Contact",   href: "/contact"   },
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-md py-3" : "bg-white py-5"
+        scrolled ? "navbar-scrolled py-3" : "py-5"
       }`}
+      style={!scrolled ? { background: "transparent" } : undefined}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="font-heading font-bold text-2xl tracking-tight text-foreground flex items-center">
-            <span className="text-primary mr-0.5">S</span>amarth<span className="ml-1 text-primary">S</span>trategies
+          <Link
+            href="/"
+            className="logo-glow font-heading font-bold text-2xl tracking-tight flex items-center transition-all duration-300"
+            style={{ color: "#F0EEE9" }}
+          >
+            <span style={{ color: "#F97316" }}>S</span>amarth
+            <span className="ml-1" style={{ color: "#F97316" }}>S</span>trategies
           </Link>
 
           {/* Desktop Nav */}
@@ -44,24 +47,29 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-foreground hover:text-primary font-medium transition-colors text-sm"
+                className="font-sans font-medium text-sm transition-colors duration-200"
+                style={{ color: "rgba(240,238,233,0.7)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#F97316")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,238,233,0.7)")}
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="bg-accent hover:bg-amber-600 text-white px-5 py-2.5 rounded-md font-semibold transition-colors shadow-sm text-sm"
+              className="btn-primary px-5 py-2.5 rounded-lg font-sans font-medium text-sm tracking-[0.05em] uppercase"
             >
               Get Free Audit
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground hover:text-primary focus:outline-none"
+              style={{ color: "#F0EEE9" }}
+              className="focus:outline-none"
+              aria-label="Toggle menu"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -71,13 +79,17 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-          <div className="px-4 pt-2 pb-6 flex flex-col space-y-3">
+        <div
+          className="md:hidden absolute w-full shadow-2xl"
+          style={{ background: "#0A0A0F", borderBottom: "1px solid rgba(249,115,22,0.2)" }}
+        >
+          <div className="px-4 pt-2 pb-6 flex flex-col space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="block px-3 py-2 text-foreground hover:text-primary hover:bg-gray-50 rounded-md font-medium"
+                className="block px-3 py-3 font-sans font-medium rounded-lg transition-colors"
+                style={{ color: "rgba(240,238,233,0.75)" }}
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
@@ -85,7 +97,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="bg-accent text-white block px-3 py-3 mt-4 text-center rounded-md font-semibold"
+              className="btn-primary block px-3 py-3 mt-4 text-center rounded-lg font-sans font-medium tracking-[0.05em] uppercase"
               onClick={() => setIsOpen(false)}
             >
               Get Free Audit

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 interface CaseStudyCardProps {
@@ -13,6 +12,14 @@ interface CaseStudyCardProps {
   link?: string;
 }
 
+// Gradient backgrounds to simulate image backgrounds for each card
+const CARD_GRADIENTS = [
+  "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+  "linear-gradient(135deg, #1a1a1a 0%, #2d1b4e 50%, #1a0a2e 100%)",
+  "linear-gradient(135deg, #0d1b0d 0%, #1a2e1a 50%, #0a1a14 100%)",
+];
+let gradientIndex = 0;
+
 export default function CaseStudyCard({
   location,
   industry,
@@ -22,55 +29,82 @@ export default function CaseStudyCard({
   delay = 0,
   link,
 }: CaseStudyCardProps) {
+  const bg = CARD_GRADIENTS[gradientIndex++ % CARD_GRADIENTS.length];
+
+  const CardWrapper = ({ children }: { children: React.ReactNode }) =>
+    link ? (
+      <a href={link} target="_blank" rel="noopener noreferrer" className="portfolio-card block rounded-2xl h-full" style={{ background: bg, minHeight: "320px" }}>
+        {children}
+      </a>
+    ) : (
+      <div className="portfolio-card block rounded-2xl h-full" style={{ background: bg, minHeight: "320px" }}>
+        {children}
+      </div>
+    );
+
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay }}
-      className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-t-4 border-t-primary border-l border-r border-b border-gray-100 overflow-hidden group flex flex-col h-full hover:-translate-y-2"
-    >
-      <div className="p-8 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-6">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1 block">
+    <div style={{ transitionDelay: `${delay}s` }} className="reveal h-full">
+      <CardWrapper>
+        {/* Dark overlay */}
+        <div
+          className="card-overlay relative flex flex-col h-full p-8 rounded-2xl"
+          style={{ background: "rgba(0,0,0,0.55)", minHeight: "320px" }}
+        >
+          {/* Top row */}
+          <div className="flex items-start justify-between mb-auto">
+            {/* Location badge */}
+            <span
+              className="font-sans font-medium text-xs px-3 py-1 rounded-full tracking-wide uppercase"
+              style={{ background: "#F97316", color: "#0A0A0F" }}
+            >
               {location}
             </span>
-            <h3 className="text-xl font-heading font-bold text-foreground">
+
+            {/* Arrow */}
+            <div
+              className="card-arrow flex items-center justify-center rounded-full"
+              style={{
+                width: "36px", height: "36px",
+                background: "rgba(249,115,22,0.15)",
+                color: "#F97316",
+              }}
+            >
+              <ArrowUpRight size={18} />
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="mt-8">
+            <h3 className="font-heading font-bold mb-4" style={{ fontSize: "20px", color: "#F0EEE9" }}>
               {industry}
             </h3>
-          </div>
-          {link ? (
-            <a href={link} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-primary group-hover:text-white text-gray-400 transition-colors cursor-pointer">
-              <ArrowUpRight size={20} />
-            </a>
-          ) : (
-            <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-primary group-hover:text-white text-gray-400 transition-colors">
-              <ArrowUpRight size={20} />
+
+            <div className="space-y-3 mb-6">
+              <div>
+                <span className="font-sans text-xs font-medium uppercase tracking-widest" style={{ color: "#F97316" }}>
+                  Challenge
+                </span>
+                <p className="font-sans text-sm mt-1" style={{ color: "rgba(240,238,233,0.65)" }}>{challenge}</p>
+              </div>
+              <div>
+                <span className="font-sans text-xs font-medium uppercase tracking-widest" style={{ color: "#6366F1" }}>
+                  Result
+                </span>
+                <p className="font-sans text-sm mt-1" style={{ color: "rgba(240,238,233,0.65)" }}>{result}</p>
+              </div>
             </div>
-          )}
-        </div>
 
-        <div className="mb-6 flex-grow">
-          <div className="mb-4">
-            <span className="text-sm font-semibold text-gray-900 block mb-1">Challenge:</span>
-            <p className="text-gray-600 text-sm leading-relaxed">{challenge}</p>
-          </div>
-          <div>
-            <span className="text-sm font-semibold text-gray-900 block mb-1">Result:</span>
-            <p className="text-gray-600 text-sm leading-relaxed">{result}</p>
-          </div>
-        </div>
-
-        <div className="mt-auto pt-6 border-t border-gray-100">
-          <div className="text-3xl font-heading font-black text-accent mb-1">
-            {metric}
-          </div>
-          <div className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-            Key Metric
+            <div
+              className="inline-block rounded-xl px-4 py-2"
+              style={{ background: "rgba(249,115,22,0.12)", border: "1px solid rgba(249,115,22,0.25)" }}
+            >
+              <span className="font-heading font-bold" style={{ fontSize: "22px", color: "#F97316" }}>
+                {metric}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </CardWrapper>
+    </div>
   );
 }
