@@ -74,7 +74,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {caseStudies.map((study, index) => (
-              <CaseStudyCard key={index} {...study} delay={index * 0.15} />
+              <CaseStudyCard key={index} {...study} index={index} delay={index * 0.15} />
             ))}
           </div>
         </div>

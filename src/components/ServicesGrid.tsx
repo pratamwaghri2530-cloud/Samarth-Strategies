@@ -1,36 +1,88 @@
 "use client";
 
 import Link from "next/link";
-import { Monitor, Bot, Megaphone, Search } from "lucide-react";
+import { Monitor, Zap, Megaphone, Search, Bot, Cpu } from "lucide-react";
 
 const services = [
   {
     title: "Web Development",
-    description: "Custom websites that load fast and convert visitors into customers",
     icon: Monitor,
     slug: "web-development",
-    emoji: "🌐",
+    description:
+      "Your business deserves more than a brochure online. We build fast, mobile-first websites that turn visitors into paying customers — with clear messaging, strong design, and built-in lead capture.",
+    points: [
+      "Custom business websites",
+      "Landing pages that convert",
+      "Portfolio and service showcase sites",
+      "WhatsApp and call integration built-in",
+    ],
   },
   {
-    title: "AI Automations",
-    description: "Automate repetitive tasks and serve customers 24/7 with AI",
+    title: "AI Agents",
     icon: Bot,
     slug: "ai-automations",
-    emoji: "🤖",
+    description:
+      "Autonomous AI agents that work 24/7 for your business — handling customer queries, booking appointments, following up on leads, and completing tasks without human intervention.",
+    points: [
+      "WhatsApp booking agents",
+      "Customer support agents",
+      "Lead qualification agents",
+      "Follow-up and reminder agents",
+      "Voice agents for missed calls",
+    ],
   },
   {
     title: "Google Ads",
-    description: "Get in front of customers actively searching for your business",
     icon: Megaphone,
     slug: "google-ads",
-    emoji: "📣",
+    description:
+      "Stop waiting for customers to find you. We run targeted Google Ads that put your business in front of people actively searching for exactly what you offer — with zero wasted spend.",
+    points: [
+      "Search and display campaigns",
+      "Daily budget monitoring",
+      "Call and WhatsApp conversion tracking",
+      "ROI reporting every month",
+    ],
   },
   {
     title: "SEO Optimization",
-    description: "Rank higher on Google and get free, consistent traffic",
     icon: Search,
     slug: "seo-optimization",
-    emoji: "🔍",
+    description:
+      "When someone in your city searches for your service, you should be the first result they see. We get you ranking on Google Maps and search so customers find you — not your competitors.",
+    points: [
+      "Google Maps / Local SEO",
+      "Keyword targeting for your area",
+      "Monthly ranking reports",
+      "Google Business Profile optimization",
+    ],
+  },
+  {
+    title: "AI Automations",
+    icon: Zap,
+    slug: "ai-automations",
+    description:
+      "Connect your tools and eliminate repetitive manual work. We build automation systems that save your team hours every day.",
+    points: [
+      "WhatsApp auto-responders",
+      "Appointment reminder systems",
+      "Lead capture from Instagram and Facebook",
+      "Automatic invoice and report generation",
+      "CRM data entry automation",
+    ],
+  },
+  {
+    title: "AI Strategy",
+    icon: Cpu,
+    slug: "ai-automations",
+    description:
+      "Not sure where AI fits in your business? We map your operations, find the highest-ROI automation opportunities, and build a phased roadmap so you grow without overwhelm.",
+    points: [
+      "Operations audit & AI opportunity mapping",
+      "Custom automation roadmap",
+      "Tool selection and integration planning",
+      "Team training and handoff",
+    ],
   },
 ];
 
@@ -46,49 +98,73 @@ export default function ServicesGrid() {
           >
             What We Do
           </h2>
-          <p className="font-sans max-w-2xl mx-auto" style={{ color: "rgba(240,238,233,0.65)", fontSize: "18px" }}>
+          <p
+            className="font-sans max-w-2xl mx-auto"
+            style={{ color: "rgba(240,238,233,0.65)", fontSize: "18px" }}
+          >
             Comprehensive digital solutions designed to help Indian offline businesses thrive online.
           </p>
         </div>
 
-        {/* 2×2 grid */}
-        <div className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* 3-column grid on large screens, 2-column on medium, 1 on mobile */}
+        <div className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <div
-                key={service.slug}
-                className="service-card rounded-2xl p-8 flex flex-col h-full"
+                key={`${service.slug}-${service.title}`}
+                className="service-card rounded-2xl p-8 flex flex-col"
                 style={{
                   background: "#13131A",
                   border: "1px solid rgba(249,115,22,0.2)",
                   borderRadius: "16px",
                 }}
               >
-                {/* Icon block */}
+                {/* Icon */}
                 <div
-                  className="inline-flex items-center justify-center rounded-xl mb-6"
-                  style={{ width: "56px", height: "56px", background: "rgba(249,115,22,0.1)" }}
+                  className="inline-flex items-center justify-center rounded-xl mb-6 flex-shrink-0"
+                  style={{ width: "52px", height: "52px", background: "rgba(249,115,22,0.1)" }}
                 >
-                  <Icon className="w-7 h-7" style={{ color: "#F97316" }} />
+                  <Icon className="w-6 h-6" style={{ color: "#F97316" }} />
                 </div>
 
+                {/* Title */}
                 <h3
                   className="font-heading font-bold mb-3"
-                  style={{ fontSize: "22px", color: "#F0EEE9" }}
+                  style={{ fontSize: "20px", color: "#F0EEE9" }}
                 >
                   {service.title}
                 </h3>
+
+                {/* Description */}
                 <p
-                  className="font-sans mb-6 flex-grow leading-relaxed"
-                  style={{ color: "rgba(240,238,233,0.6)" }}
+                  className="font-sans mb-5 leading-relaxed"
+                  style={{ color: "rgba(240,238,233,0.6)", fontSize: "14px" }}
                 >
                   {service.description}
                 </p>
 
+                {/* Sub-points */}
+                <ul className="space-y-1.5 mb-6 flex-grow">
+                  {service.points.map((point) => (
+                    <li
+                      key={point}
+                      className="flex items-start gap-2 font-sans"
+                      style={{ fontSize: "13px", color: "rgba(240,238,233,0.5)" }}
+                    >
+                      <span
+                        className="flex-shrink-0 mt-1 rounded-full"
+                        style={{ width: "5px", height: "5px", background: "#F97316", opacity: 0.7 }}
+                      />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Link */}
                 <Link
                   href={`/services/${service.slug}`}
-                  className="inline-flex items-center font-sans font-medium text-sm tracking-[0.05em] uppercase transition-colors duration-200"
+                  className="inline-flex items-center font-sans font-medium text-xs tracking-[0.08em] uppercase mt-auto transition-colors duration-200"
                   style={{ color: "#F97316" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#6366F1")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#F97316")}
