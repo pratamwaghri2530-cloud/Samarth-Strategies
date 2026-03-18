@@ -90,8 +90,8 @@ export default function AboutPage() {
                 {
                   initials: "PW",
                   name: "Pratam Waghri",
-                  role: "Co-Founder — Strategy & Growth",
-                  bio: "Mumbai-based entrepreneur leading client strategy, outreach, and business development. His background spans content creation, Maratha history research, and building AI-powered systems for local businesses.",
+                  role: "Founder — Strategy & Growth",
+                  bio: "Mumbai-based entrepreneur leading client strategy, outreach, and business development. His background spans content creation and building AI-powered systems for local businesses.",
                 },
                 {
                   initials: "AS",
