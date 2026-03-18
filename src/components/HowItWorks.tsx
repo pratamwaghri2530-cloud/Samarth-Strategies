@@ -6,18 +6,21 @@ const steps = [
     icon: "🔍",
     title: "Free Audit",
     description: "We analyze your current online presence (or lack of it)",
+    subtitle: "We review your online visibility, WhatsApp response time, and Google presence in under 24 hours.",
   },
   {
     number: "02",
     icon: "📋",
     title: "Custom Strategy",
     description: "We build a plan tailored to your business and budget",
+    subtitle: "You receive a clear action plan with timelines, deliverables, and fixed pricing. No surprises.",
   },
   {
     number: "03",
     icon: "🚀",
     title: "Execute & Grow",
     description: "We execute, track results, and scale what works",
+    subtitle: "We build, launch, and track results. You focus on your business — we handle everything else.",
   },
 ];
 
@@ -81,16 +84,22 @@ export default function HowItWorks() {
                 </div>
 
                 <h3
-                  className="font-heading font-bold mb-3 relative z-10"
+                  className="font-heading font-bold mb-2 relative z-10"
                   style={{ fontSize: "22px", color: "#F0EEE9" }}
                 >
                   {step.title}
                 </h3>
                 <p
-                  className="font-sans leading-relaxed max-w-xs relative z-10"
+                  className="font-sans leading-relaxed max-w-xs relative z-10 mb-3"
                   style={{ color: "rgba(240,238,233,0.6)" }}
                 >
                   {step.description}
+                </p>
+                <p
+                  className="font-sans leading-relaxed max-w-xs relative z-10 text-sm"
+                  style={{ color: "rgba(240,238,233,0.4)" }}
+                >
+                  {step.subtitle}
                 </p>
               </div>
             ))}

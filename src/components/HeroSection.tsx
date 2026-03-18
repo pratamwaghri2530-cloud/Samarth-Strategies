@@ -94,7 +94,7 @@ export default function HeroSection() {
               style={{ background: "#F97316" }}
             />
           </span>
-          Growing Indian Businesses, Digitally
+          AI-Powered Growth for Local Businesses
         </div>
 
         {/* Headline */}
@@ -116,9 +116,9 @@ export default function HeroSection() {
           className="font-sans leading-relaxed mb-10 max-w-2xl mx-auto"
           style={{ fontSize: "clamp(16px, 2.2vw, 20px)", color: "rgba(240,238,233,0.65)" }}
         >
-          Samarth Strategies helps local businesses get found online, automate
-          customer conversations, and grow revenue — with AI-powered websites
-          and smart automation.
+          Samarth Strategies builds AI-powered websites and 24/7 automation
+          systems for local businesses — so you get more calls, more bookings,
+          and more revenue without lifting a finger.
         </p>
 
         {/* CTAs */}

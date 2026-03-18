@@ -85,6 +85,65 @@ export default function AboutPage() {
             </div>
           </div>
 
+          {/* Founders */}
+          <hr className="section-divider mb-20" />
+          <div className="text-center max-w-4xl mx-auto mb-20">
+            <h2
+              className="font-heading font-bold mb-12"
+              style={{ fontSize: "clamp(24px, 4vw, 36px)", color: "#F0EEE9" }}
+            >
+              The People Behind Samarth Strategies
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+              {[
+                {
+                  initials: "PW",
+                  name: "Pratam Waghri",
+                  role: "Co-Founder & Strategy",
+                  bio: "Based in Chembur, Mumbai. Pratam leads client strategy, outreach, and business development. His background spans content creation, Maratha history research, and building AI-powered systems for local businesses.",
+                },
+                {
+                  initials: "AS",
+                  name: "Aryesh Shivmare",
+                  role: "Co-Founder & Technology",
+                  bio: "Based in Mumbai. Aryesh leads all technical development — websites, automation systems, and AI integrations. He builds the systems that make our clients' businesses run 24/7.",
+                },
+              ].map(({ initials, name, role, bio }) => (
+                <div
+                  key={name}
+                  className="rounded-2xl p-8 flex flex-col gap-6"
+                  style={{
+                    background: "#13131A",
+                    border: "1px solid rgba(249,115,22,0.2)",
+                  }}
+                >
+                  <div className="flex items-center gap-4">
+                    <div
+                      className="flex items-center justify-center rounded-2xl font-heading font-extrabold flex-shrink-0"
+                      style={{
+                        width: "64px", height: "64px",
+                        background: "rgba(249,115,22,0.1)",
+                        color: "#F97316",
+                        fontSize: "20px",
+                      }}
+                    >
+                      {initials}
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold" style={{ fontSize: "18px", color: "#F0EEE9" }}>
+                        {name}
+                      </h3>
+                      <p className="font-sans text-sm" style={{ color: "#F97316" }}>{role}</p>
+                    </div>
+                  </div>
+                  <p className="font-sans leading-relaxed" style={{ color: "rgba(240,238,233,0.6)", fontSize: "15px" }}>
+                    {bio}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Core Values */}
           <hr className="section-divider mb-20" />
           <div className="text-center max-w-5xl mx-auto">

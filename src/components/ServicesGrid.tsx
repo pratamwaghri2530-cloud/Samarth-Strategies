@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Monitor, Zap, Megaphone, Search, Bot, Cpu } from "lucide-react";
+import { Monitor, Megaphone, Search, Bot, Cpu } from "lucide-react";
 
 const services = [
   {
@@ -18,17 +18,17 @@ const services = [
     ],
   },
   {
-    title: "AI Agents",
+    title: "AI Automation & Agents",
     icon: Bot,
     slug: "ai-automations",
     description:
-      "Autonomous AI agents that work 24/7 for your business — handling customer queries, booking appointments, following up on leads, and completing tasks without human intervention.",
+      "Autonomous AI systems that work 24/7 — handling customer queries on WhatsApp, booking appointments, following up on leads, and completing repetitive tasks without any human intervention.",
     points: [
-      "WhatsApp booking agents",
-      "Customer support agents",
-      "Lead qualification agents",
-      "Follow-up and reminder agents",
+      "WhatsApp booking and support agents",
+      "Appointment reminders and follow-ups",
+      "Lead capture from Instagram and Facebook",
       "Voice agents for missed calls",
+      "CRM and invoice automation",
     ],
   },
   {
@@ -55,20 +55,6 @@ const services = [
       "Keyword targeting for your area",
       "Monthly ranking reports",
       "Google Business Profile optimization",
-    ],
-  },
-  {
-    title: "AI Automations",
-    icon: Zap,
-    slug: "ai-automations",
-    description:
-      "Connect your tools and eliminate repetitive manual work. We build automation systems that save your team hours every day.",
-    points: [
-      "WhatsApp auto-responders",
-      "Appointment reminder systems",
-      "Lead capture from Instagram and Facebook",
-      "Automatic invoice and report generation",
-      "CRM data entry automation",
     ],
   },
   {
@@ -102,17 +88,17 @@ export default function ServicesGrid() {
             className="font-sans max-w-2xl mx-auto"
             style={{ color: "rgba(240,238,233,0.65)", fontSize: "18px" }}
           >
-            Comprehensive digital solutions designed to help Indian offline businesses thrive online.
+            Comprehensive digital solutions designed to help local businesses thrive online.
           </p>
         </div>
 
-        {/* 3-column grid on large screens, 2-column on medium, 1 on mobile */}
+        {/* Grid */}
         <div className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <div
-                key={`${service.slug}-${service.title}`}
+                key={service.title}
                 className="service-card rounded-2xl p-8 flex flex-col"
                 style={{
                   background: "#13131A",

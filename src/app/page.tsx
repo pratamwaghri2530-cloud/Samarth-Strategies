@@ -4,6 +4,7 @@ import WhatsAppDemo from "@/components/WhatsAppDemo";
 import ServicesGrid from "@/components/ServicesGrid";
 import HowItWorks from "@/components/HowItWorks";
 import StatsBar from "@/components/StatsBar";
+import FAQSection from "@/components/FAQSection";
 import Testimonials from "@/components/Testimonials";
 import CTASection from "@/components/CTASection";
 
@@ -24,6 +25,9 @@ export default function Home() {
 
       <hr className="section-divider" />
       <StatsBar />
+
+      <hr className="section-divider" />
+      <FAQSection />
 
       <hr className="section-divider" />
       <Testimonials />

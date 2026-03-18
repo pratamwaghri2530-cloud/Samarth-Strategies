@@ -6,7 +6,8 @@ import { MessageCircle, Calendar } from "lucide-react";
 export default function CTASection() {
   const whatsappUrl =
     "https://wa.me/918850840056?text=Hi%20Samarth%20Strategies%20Team!%20I%20want%20to%20grow%20my%20business%20online.";
-  const calendlyUrl = "#";
+  const calendlyUrl =
+    "https://wa.me/918850840056?text=Hi%20Samarth%20Strategies!%20I%20would%20like%20to%20book%20a%20free%20consultation.";
 
   return (
     <section
