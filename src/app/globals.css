@@ -57,8 +57,8 @@ body {
    SCROLL REVEAL
    ============================================================ */
 .reveal {
-  opacity: 0;
-  transform: translateY(40px);
+  opacity: 1 !important;
+  transform: none !important;
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   will-change: transform, opacity;
 }
@@ -68,8 +68,8 @@ body {
 }
 
 .reveal-stagger > * {
-  opacity: 0;
-  transform: translateY(40px);
+  opacity: 1 !important;
+  transform: none !important;
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   will-change: transform, opacity;
 }
