@@ -87,29 +87,39 @@ export default function AboutPage() {
 
           {/* Core Values */}
           <hr className="section-divider mb-20" />
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-5xl mx-auto">
             <h2
               className="font-heading font-bold mb-12"
               style={{ fontSize: "clamp(24px, 4vw, 36px)", color: "#F0EEE9" }}
             >
               Our Core Values
             </h2>
-            <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
               {[
                 {
+                  icon: "⚡",
+                  title: "Speed is a Service",
+                  body: "Every hour your business goes unanswered online is a customer lost. We build systems that respond instantly — so you never lose a lead to slow replies again.",
+                },
+                {
                   icon: "🎯",
-                  title: "Results First",
-                  body: "We don't care about vanity metrics. We care about calls, bookings, and revenue for your business.",
+                  title: "Results Over Vanity",
+                  body: "We don't care about pretty reports or follower counts. We care about calls, bookings, and revenue. If it doesn't grow your business, we don't build it.",
                 },
                 {
-                  icon: "🔍",
-                  title: "Transparency",
-                  body: "No hidden fees or confusing reports. You'll always know exactly where your investment is going.",
+                  icon: "🤖",
+                  title: "AI-First Thinking",
+                  body: "Every solution we build starts with one question: how can AI make this faster, smarter, and more powerful? We don't add AI as an afterthought — it's the foundation.",
                 },
                 {
-                  icon: "🇮🇳",
-                  title: "Local Focus",
-                  body: "We understand the unique challenges and opportunities of local Indian markets and businesses.",
+                  icon: "🔒",
+                  title: "Radical Transparency",
+                  body: "No hidden fees. No confusing jargon. No fake promises. You always know exactly what we're building, why we're building it, and what it will cost.",
+                },
+                {
+                  icon: "🌍",
+                  title: "Global Ambition, Local Soul",
+                  body: "We are based in Mumbai but we think global. We have built for clients in India, Costa Rica, and the US — and we bring that global perspective to every local business we work with.",
                 },
               ].map(({ icon, title, body }) => (
                 <div

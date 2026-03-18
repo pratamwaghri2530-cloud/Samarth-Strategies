@@ -106,9 +106,9 @@ export default function HeroSection() {
             letterSpacing: "-0.02em",
           }}
         >
-          Your business is open 24 hours.
+          We don&apos;t just build websites.
           <br />
-          <span style={{ color: "#F97316" }}>Your marketing isn&apos;t.</span>
+          <span style={{ color: "#F97316" }}>We build businesses.</span>
         </h1>
 
         {/* Sub-headline */}
@@ -116,8 +116,9 @@ export default function HeroSection() {
           className="font-sans leading-relaxed mb-10 max-w-2xl mx-auto"
           style={{ fontSize: "clamp(16px, 2.2vw, 20px)", color: "rgba(240,238,233,0.65)" }}
         >
-          Samarth Strategies builds AI automation and digital presence for local
-          Indian businesses — so you never miss a customer, day or night.
+          Samarth Strategies helps local businesses get found online, automate
+          customer conversations, and grow revenue — with AI-powered websites
+          and smart automation.
         </p>
 
         {/* CTAs */}

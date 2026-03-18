@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Calendar } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
@@ -11,86 +12,133 @@ export const metadata: Metadata = {
 export default function BlogIndexPage() {
   const posts = [
     {
-      title: "Why Your Local Business Needs a Google Business Profile in 2026",
-      excerpt: "A complete guide to claiming, optimizing, and ranking your Google Business Profile to attract more local walk-ins.",
-      category: "Local SEO",
-      date: "March 10, 2026",
+      title: "Why Your Clinic Is Losing Patients After 7 PM",
+      excerpt: "Most clinics respond to WhatsApp enquiries the next morning. By then, the patient has already booked with someone else. Here's how AI automation keeps your practice open 24 hours a day.",
+      category: "AI AUTOMATION",
+      date: "March 15, 2026",
       readTime: "5 min read",
-      slug: "google-business-profile-guide-2026"
+      slug: "why-your-clinic-loses-patients-after-7pm",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800",
     },
     {
-      title: "How Clinics Are Using AI Automations to Book More Appointments",
-      excerpt: "Stop losing patients to competitors after hours. Learn how simple AI chatbots integrate with WhatsApp to handle bookings 24/7.",
-      category: "AI Automations",
-      date: "February 28, 2026",
-      readTime: "7 min read",
-      slug: "ai-automations-for-clinics"
-    },
-    {
-      title: "The Real Cost of a Slow Website for E-commerce & Retail",
-      excerpt: "For every second your site takes to load, you're losing customers. Here's how a fast Next.js website fixes that.",
-      category: "Web Development",
-      date: "February 15, 2026",
+      title: "The ₹12,000 Website That Pays for Itself in a Week",
+      excerpt: "A local yoga studio in Kharghar had 5-star reviews but no website. Three weeks after we built one, she had her first batch fully booked from Google searches. This is how it works.",
+      category: "WEB DEVELOPMENT",
+      date: "March 8, 2026",
       readTime: "4 min read",
-      slug: "cost-of-slow-website"
+      slug: "website-that-pays-for-itself",
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800",
     },
     {
-      title: "Google Ads vs. SEO: Which is better for local Indian businesses?",
-      excerpt: "A breakdown of short-term wins versus long-term growth, and how to balance your budget between the two.",
-      category: "Marketing Strategy",
-      date: "January 22, 2026",
+      title: "How We Built a WhatsApp Bot in One Night for a Chiropractic Clinic",
+      excerpt: "HSC Chiropractic in Kharghar was getting patient enquiries at 10 PM and replying the next morning. We built them a bot in one night. Here's exactly what we built and how you can too.",
+      category: "WHATSAPP AUTOMATION",
+      date: "February 28, 2026",
       readTime: "6 min read",
-      slug: "google-ads-vs-seo-local-business"
-    }
+      slug: "whatsapp-bot-chiropractic-clinic",
+      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800",
+    },
+    {
+      title: "5 Reasons Your Google Business Profile is Costing You Customers",
+      excerpt: "87% of customers search online before visiting a local business. If your Google Business Profile has the wrong hours, no photos, or zero reviews — you're invisible. Here's how to fix it in 30 minutes.",
+      category: "DIGITAL STRATEGY",
+      date: "February 20, 2026",
+      readTime: "7 min read",
+      slug: "google-business-profile-mistakes",
+      image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800",
+    },
   ];
 
   return (
     <>
-      <section className="bg-gray-light pt-32 pb-16 md:pt-40 md:pb-24 border-b border-gray-200 text-center">
+      <section
+        className="pt-36 pb-20 md:pt-48 md:pb-28 text-center reveal"
+        style={{ background: "#0A0A0F", borderBottom: "1px solid rgba(240,238,233,0.06)" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
-            Insights & <span className="text-primary">Strategies</span>
+          <h1
+            className="font-heading font-extrabold mb-6 leading-tight"
+            style={{ fontSize: "clamp(36px, 7vw, 72px)", color: "#F0EEE9", letterSpacing: "-0.02em" }}
+          >
+            Insights &amp;{" "}
+            <span style={{ color: "#F97316" }}>Strategies</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Actionable advice, guides, and updates to help you navigate the digital landscape and scale your business.
+          <p
+            className="font-sans leading-relaxed max-w-3xl mx-auto"
+            style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "rgba(240,238,233,0.65)" }}
+          >
+            Actionable advice, guides, and real stories to help you grow your business online.
           </p>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 reveal" style={{ background: "#0A0A0F" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {posts.map((post, index) => (
-              <article key={index} className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col h-full">
-                <div className="aspect-video bg-gray-100 relative overflow-hidden flex items-center justify-center">
-                  <span className="text-gray-400 font-medium tracking-wide uppercase">Cover Image Placeholder</span>
+              <article
+                key={index}
+                className="rounded-2xl overflow-hidden flex flex-col h-full"
+                style={{ background: "#13131A", border: "1px solid rgba(240,238,233,0.08)" }}
+              >
+                <div className="aspect-video relative overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
-                
+
                 <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex items-center text-sm text-gray-500 mb-4 space-x-4">
-                    <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-semibold text-xs uppercase tracking-wider">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span
+                      className="font-sans font-semibold text-xs tracking-wider px-3 py-1 rounded-full"
+                      style={{ background: "rgba(249,115,22,0.1)", color: "#F97316" }}
+                    >
                       {post.category}
                     </span>
-                    <span className="flex items-center">
-                      <Calendar size={14} className="mr-1" />
+                    <span
+                      className="font-sans text-xs flex items-center gap-1"
+                      style={{ color: "rgba(240,238,233,0.4)" }}
+                    >
+                      <Calendar size={12} />
                       {post.date}
                     </span>
-                  </div>
-                  
-                  <h2 className="text-2xl font-heading font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h2>
-                  
-                  <p className="text-gray-600 mb-6 flex-grow leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="pt-6 border-t border-gray-100 flex items-center justify-between mt-auto">
-                    <span className="text-sm font-medium text-gray-500">
+                    <span
+                      className="font-sans text-xs flex items-center gap-1"
+                      style={{ color: "rgba(240,238,233,0.4)" }}
+                    >
+                      <Clock size={12} />
                       {post.readTime}
                     </span>
-                    <Link href={`/blog/${post.slug}`} className="text-primary font-semibold flex items-center hover:text-indigo-800 transition-colors">
-                      Read Article <ArrowRight size={16} className="ml-1" />
+                  </div>
+
+                  <h2
+                    className="font-heading font-bold mb-3"
+                    style={{ fontSize: "clamp(18px, 2vw, 22px)", color: "#F0EEE9", lineHeight: 1.3 }}
+                  >
+                    {post.title}
+                  </h2>
+
+                  <p
+                    className="font-sans leading-relaxed mb-6 flex-grow"
+                    style={{ color: "rgba(240,238,233,0.6)", fontSize: "15px" }}
+                  >
+                    {post.excerpt}
+                  </p>
+
+                  <div
+                    className="pt-6 flex items-center justify-between mt-auto"
+                    style={{ borderTop: "1px solid rgba(240,238,233,0.08)" }}
+                  >
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="font-sans font-semibold flex items-center gap-1 transition-colors"
+                      style={{ color: "#F97316", fontSize: "14px" }}
+                    >
+                      Read Article <ArrowRight size={16} />
                     </Link>
                   </div>
                 </div>
@@ -99,7 +147,7 @@ export default function BlogIndexPage() {
           </div>
         </div>
       </section>
-      
+
       <CTASection />
     </>
   );
