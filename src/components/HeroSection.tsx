@@ -1,175 +1,162 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
-// Fixed particle data — no random values to avoid hydration mismatch
-const PARTICLES = [
-  { left: "5%",  animationDuration: "9s",  animationDelay: "0s"    },
-  { left: "12%", animationDuration: "13s", animationDelay: "1.2s"  },
-  { left: "18%", animationDuration: "8s",  animationDelay: "3.5s"  },
-  { left: "24%", animationDuration: "11s", animationDelay: "0.7s"  },
-  { left: "30%", animationDuration: "15s", animationDelay: "5.1s"  },
-  { left: "36%", animationDuration: "9s",  animationDelay: "2.3s"  },
-  { left: "42%", animationDuration: "12s", animationDelay: "4.0s"  },
-  { left: "48%", animationDuration: "10s", animationDelay: "1.6s"  },
-  { left: "54%", animationDuration: "14s", animationDelay: "0.4s"  },
-  { left: "60%", animationDuration: "8s",  animationDelay: "3.0s"  },
-  { left: "66%", animationDuration: "11s", animationDelay: "5.8s"  },
-  { left: "72%", animationDuration: "9s",  animationDelay: "2.7s"  },
-  { left: "78%", animationDuration: "13s", animationDelay: "0.9s"  },
-  { left: "84%", animationDuration: "10s", animationDelay: "4.4s"  },
-  { left: "90%", animationDuration: "12s", animationDelay: "1.8s"  },
-  { left: "8%",  animationDuration: "16s", animationDelay: "6.2s"  },
-  { left: "15%", animationDuration: "9s",  animationDelay: "2.1s"  },
-  { left: "22%", animationDuration: "11s", animationDelay: "4.8s"  },
-  { left: "33%", animationDuration: "8s",  animationDelay: "0.2s"  },
-  { left: "44%", animationDuration: "14s", animationDelay: "3.9s"  },
-  { left: "56%", animationDuration: "10s", animationDelay: "1.4s"  },
-  { left: "67%", animationDuration: "12s", animationDelay: "5.5s"  },
-  { left: "76%", animationDuration: "9s",  animationDelay: "2.9s"  },
-  { left: "87%", animationDuration: "13s", animationDelay: "0.6s"  },
-  { left: "94%", animationDuration: "11s", animationDelay: "4.2s"  },
-  { left: "3%",  animationDuration: "15s", animationDelay: "7.0s"  },
-  { left: "27%", animationDuration: "8s",  animationDelay: "1.1s"  },
-  { left: "51%", animationDuration: "10s", animationDelay: "3.3s"  },
-  { left: "70%", animationDuration: "12s", animationDelay: "6.5s"  },
-  { left: "96%", animationDuration: "9s",  animationDelay: "2.5s"  },
+const IMAGES = [
+  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600",
+  "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1600",
+  "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600",
+  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600",
 ];
 
 export default function HeroSection() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % IMAGES.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section
-      className="relative overflow-hidden flex items-center justify-center"
-      style={{ minHeight: "100vh", background: "#0A0A0F" }}
-    >
-      {/* Floating particles */}
-      {PARTICLES.map((p, i) => (
-        <span
+    <section className="hero-section">
+      {/* Background images — crossfade */}
+      {IMAGES.map((src, i) => (
+        <div
           key={i}
-          className="particle"
           style={{
-            left: p.left,
-            top: "100%",
-            animationDuration: p.animationDuration,
-            animationDelay: p.animationDelay,
+            position: "absolute",
+            inset: 0,
+            opacity: i === active ? 1 : 0,
+            transition: "opacity 0.8s ease-in-out",
+            zIndex: 0,
           }}
-        />
+        >
+          <Image
+            src={src}
+            alt=""
+            fill
+            priority={i === 0}
+            sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+        </div>
       ))}
 
-      {/* Ambient glows */}
+      {/* Gradient overlay */}
+      <div className="hero-gradient" style={{ position: "absolute", inset: 0, zIndex: 1 }} />
+
+      {/* Content — left-aligned */}
       <div
-        className="absolute pointer-events-none"
-        style={{
-          width: "600px", height: "600px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%)",
-          top: "-10%", right: "-10%",
-        }}
-      />
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          width: "500px", height: "500px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)",
-          bottom: "10%", left: "-5%",
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Badge */}
-        <div
-          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-sans font-medium mb-10"
-          style={{ background: "rgba(249,115,22,0.1)", color: "#F97316" }}
-        >
-          <span className="relative flex h-2 w-2">
-            <span
-              className="animate-ping absolute inline-flex h-full w-full rounded-full"
-              style={{ background: "#F97316", opacity: 0.75 }}
-            />
-            <span
-              className="relative inline-flex rounded-full h-2 w-2"
-              style={{ background: "#F97316" }}
-            />
-          </span>
-          AI-Powered Growth for Local Businesses
-        </div>
-
-        {/* Headline */}
-        <h1
-          className="font-heading font-extrabold leading-tight mb-6"
-          style={{
-            fontSize: "clamp(36px, 7vw, 72px)",
-            color: "#F0EEE9",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          We don&apos;t just build websites.
-          <br />
-          <span style={{ color: "#F97316" }}>We build businesses.</span>
-        </h1>
-
-        {/* Sub-headline */}
-        <p
-          className="font-sans leading-relaxed mb-10 max-w-2xl mx-auto"
-          style={{ fontSize: "clamp(16px, 2.2vw, 20px)", color: "rgba(240,238,233,0.65)" }}
-        >
-          Samarth Strategies builds AI-powered websites and 24/7 automation
-          systems for local businesses — so you get more calls, more bookings,
-          and more revenue without lifting a finger.
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <Link
-            href="/contact"
-            className="btn-primary w-full sm:w-auto px-8 py-4 rounded-lg font-sans font-medium tracking-[0.1em] uppercase text-sm flex items-center justify-center gap-2"
+        className="hero-content"
+        style={{ position: "relative", zIndex: 2, height: "100%", display: "flex", alignItems: "center" }}
+      >
+        <div style={{ maxWidth: "580px" }}>
+          {/* Label */}
+          <p
+            className="font-sans"
+            style={{
+              color: "#888888",
+              fontSize: "11px",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              marginBottom: "24px",
+            }}
           >
-            Get Free Audit <ArrowRight size={18} />
-          </Link>
-          <Link
-            href="/portfolio"
-            className="btn-ghost w-full sm:w-auto px-8 py-4 rounded-lg font-sans font-medium tracking-[0.1em] uppercase text-sm"
-          >
-            See Our Work
-          </Link>
-        </div>
+            AI-Powered Growth for Local Businesses
+          </p>
 
-        {/* Micro-stats */}
-        <div
-          className="inline-flex items-center gap-0 rounded-xl overflow-hidden"
-          style={{
-            border: "1px solid rgba(240,238,233,0.08)",
-            background: "rgba(240,238,233,0.03)",
-          }}
-        >
-          {[
-            { value: "3 Businesses", label: "Served" },
-            { value: "₹0 Wasted",    label: "On Fluff" },
-            { value: "24/7",         label: "Automation" },
-          ].map((stat, i) => (
-            <div key={i} className="flex items-stretch">
-              {i > 0 && (
-                <div style={{ width: "1px", background: "#F97316", opacity: 0.5, margin: "12px 0" }} />
-              )}
-              <div className="px-6 py-4 text-center">
-                <div
-                  className="font-heading font-bold"
-                  style={{ fontSize: "20px", color: "#F0EEE9" }}
-                >
-                  {stat.value}
-                </div>
-                <div
+          {/* Headline */}
+          <h1
+            className="font-heading"
+            style={{
+              fontSize: "clamp(40px, 6vw, 64px)",
+              fontWeight: 800,
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              marginBottom: "24px",
+            }}
+          >
+            We don&apos;t just
+            <br />
+            build websites.
+            <br />
+            We build businesses.
+          </h1>
+
+          {/* Sub-headline */}
+          <p
+            className="font-sans"
+            style={{
+              color: "#AAAAAA",
+              fontSize: "18px",
+              lineHeight: 1.6,
+              maxWidth: "480px",
+              marginBottom: "40px",
+            }}
+          >
+            Samarth Strategies builds AI-powered websites and 24/7 automation
+            systems for local businesses — so you get more calls, more bookings,
+            and more revenue without lifting a finger.
+          </p>
+
+          {/* CTA Buttons */}
+          <div
+            style={{
+              display: "flex",
+              gap: "16px",
+              flexWrap: "wrap",
+              marginBottom: "48px",
+            }}
+          >
+            <Link
+              href="/contact"
+              className="font-sans hero-btn-primary"
+            >
+              GET FREE AUDIT →
+            </Link>
+
+            <Link
+              href="/portfolio"
+              className="font-sans hero-btn-ghost"
+            >
+              SEE OUR WORK
+            </Link>
+          </div>
+
+          {/* Stats row */}
+          <div style={{ display: "flex", alignItems: "center" }}>
+            {["3+ Clients", "100% On-Time", "3 sec Response"].map((label, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center" }}>
+                {i > 0 && (
+                  <div
+                    style={{
+                      width: "1px",
+                      height: "16px",
+                      background: "#444444",
+                      margin: "0 16px",
+                      flexShrink: 0,
+                    }}
+                  />
+                )}
+                <span
                   className="font-sans"
-                  style={{ fontSize: "11px", color: "rgba(240,238,233,0.5)", textTransform: "uppercase", letterSpacing: "0.1em" }}
+                  style={{
+                    color: "#888888",
+                    fontSize: "11px",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                  }}
                 >
-                  {stat.label}
-                </div>
+                  {label}
+                </span>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

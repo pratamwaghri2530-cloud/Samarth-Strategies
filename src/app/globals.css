@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #6366F1;
-  --color-accent: #F97316;
-  --color-background: #0A0A0F;
+  --color-primary: #FFFFFF;
+  --color-accent:  #FFFFFF;
+  --color-background: #0A0A0A;
   --color-foreground: #F0EEE9;
-  --color-gray-light: #13131A;
+  --color-gray-light: #111111;
   --font-sans: var(--font-inter), sans-serif;
   --font-heading: var(--font-syne), sans-serif;
 }
@@ -14,13 +14,13 @@
    BASE
    ============================================================ */
 body {
-  background-color: #0A0A0F;
+  background-color: #0A0A0A;
   color: #F0EEE9;
   font-family: var(--font-sans);
 }
 
 /* ============================================================
-   CURSOR GLOW — updated via JS mousemove on root element
+   CURSOR GLOW
    ============================================================ */
 :root {
   --cursor-x: 50vw;
@@ -34,7 +34,7 @@ body {
   z-index: 9998;
   background: radial-gradient(
     400px circle at var(--cursor-x) var(--cursor-y),
-    rgba(249, 115, 22, 0.10),
+    rgba(255, 255, 255, 0.04),
     transparent 70%
   );
   will-change: background;
@@ -47,7 +47,7 @@ body {
 .section-divider {
   height: 1px;
   width: 100%;
-  background: linear-gradient(90deg, transparent, #F97316, #6366F1, transparent);
+  background: linear-gradient(90deg, transparent, #333333, #555555, transparent);
   border: none;
   margin: 0;
   display: block;
@@ -79,57 +79,112 @@ body {
 .reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.3s;  opacity: 1; transform: translateY(0); }
 
 /* ============================================================
-   FLOATING PARTICLES (hero only)
+   HERO SECTION
    ============================================================ */
-@keyframes float-up {
-  0%   { transform: translateY(0) scale(1);   opacity: 0.2; }
-  80%  { opacity: 0.15; }
-  100% { transform: translateY(-110vh) scale(0.4); opacity: 0; }
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  background: #0A0A0A;
 }
 
-.particle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: #F97316;
-  border-radius: 50%;
-  will-change: transform, opacity;
-  animation: float-up linear infinite;
+@media (max-width: 768px) {
+  .hero-section {
+    height: 90vh;
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.85) 35%,
+    rgba(0, 0, 0, 0.4) 65%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .hero-gradient {
+    background: rgba(0, 0, 0, 0.85);
+  }
+}
+
+.hero-content {
+  padding-left: clamp(24px, 8vw, 120px);
+  padding-right: clamp(24px, 4vw, 60px);
+}
+
+.hero-btn-primary {
+  background: #FFFFFF;
+  color: #000000;
+  padding: 16px 32px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  border-radius: 0;
+  border: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+.hero-btn-primary:hover {
+  background: #DDDDDD;
+}
+
+.hero-btn-ghost {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
+  padding: 16px 32px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 0;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+.hero-btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* ============================================================
-   BUTTONS
+   BUTTONS (site-wide)
    ============================================================ */
 .btn-primary {
   position: relative;
   z-index: 0;
   overflow: hidden;
-  background: #F97316;
-  color: #fff;
+  background: #FFFFFF;
+  color: #000000;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform;
 }
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, #F97316, #6366F1);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.2);
 }
-.btn-primary:hover::before  { opacity: 1; }
-.btn-primary:hover           { transform: scale(1.03); box-shadow: 0 0 24px rgba(249,115,22,0.35); }
 
 .btn-ghost {
   background: transparent;
-  border: 1.5px solid #F97316;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
   color: #F0EEE9;
   transition: background 0.3s ease, transform 0.3s ease;
   will-change: transform;
 }
 .btn-ghost:hover {
-  background: rgba(249, 115, 22, 0.12);
+  background: rgba(255, 255, 255, 0.08);
   transform: scale(1.03);
 }
 
@@ -137,7 +192,7 @@ body {
    LOGO GLOW
    ============================================================ */
 .logo-glow:hover {
-  text-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
   transition: text-shadow 0.3s ease;
 }
 
@@ -145,7 +200,7 @@ body {
    NAVBAR SCROLLED STATE
    ============================================================ */
 .navbar-scrolled {
-  background: rgba(10, 10, 15, 0.85) !important;
+  background: rgba(10, 10, 10, 0.9) !important;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   position: relative;
@@ -157,7 +212,7 @@ body {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, #F97316, #6366F1);
+  background: #1E1E1E;
   pointer-events: none;
 }
 
@@ -221,7 +276,21 @@ body {
 }
 
 /* ============================================================
-   SERVICE CARD GLOW
+   TRUST BAR MARQUEE
+   ============================================================ */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+/* ============================================================
+   SERVICE CARD
    ============================================================ */
 .service-card {
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -229,8 +298,8 @@ body {
 }
 .service-card:hover {
   transform: translateY(-8px);
-  border-color: #F97316 !important;
-  box-shadow: 0 20px 60px -10px rgba(249, 115, 22, 0.25);
+  border-color: #FFFFFF !important;
+  box-shadow: 0 20px 60px -10px rgba(255, 255, 255, 0.08);
 }
 
 /* ============================================================
@@ -243,13 +312,13 @@ body {
 }
 .portfolio-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 .portfolio-card .card-overlay {
   transition: background 0.3s ease;
 }
 .portfolio-card:hover .card-overlay {
-  background: rgba(0,0,0,0.4) !important;
+  background: rgba(0, 0, 0, 0.4) !important;
 }
 .portfolio-card .card-arrow {
   opacity: 0;
@@ -283,8 +352,7 @@ body {
    ============================================================ */
 @keyframes gradient-cycle {
   0%   { color: #F0EEE9; }
-  33%  { color: #F97316; }
-  66%  { color: #6366F1; }
+  50%  { color: #AAAAAA; }
   100% { color: #F0EEE9; }
 }
 .gradient-text-animate {
@@ -296,23 +364,23 @@ body {
    FORM INPUT FOCUS (contact page)
    ============================================================ */
 .dark-input {
-  background: #13131A;
-  border: 1px solid rgba(240, 238, 233, 0.15);
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #F0EEE9;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   outline: none;
 }
 .dark-input::placeholder { color: rgba(240, 238, 233, 0.35); }
 .dark-input:focus {
-  border-color: #F97316;
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
 /* ============================================================
-   HOW IT WORKS — gradient connecting line
+   HOW IT WORKS — connecting line
    ============================================================ */
 .gradient-line {
-  background: linear-gradient(90deg, #F97316, #6366F1);
+  background: linear-gradient(90deg, #333333, #666666);
 }
 
 /* ============================================================
@@ -334,4 +402,5 @@ body {
   }
   .cursor-glow-overlay { display: none; }
   .carousel-track { animation: none; }
+  .marquee-track { animation: none; }
 }
