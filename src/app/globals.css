@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #FFFFFF;
-  --color-accent:  #FFFFFF;
+  --color-primary:    #C9A044;
+  --color-accent:     #C9A044;
   --color-background: #0A0A0A;
-  --color-foreground: #F0EEE9;
-  --color-gray-light: #111111;
-  --font-sans: var(--font-inter), sans-serif;
+  --color-foreground: #FFFFFF;
+  --color-gray-light: #141414;
+  --font-sans:    var(--font-inter), sans-serif;
   --font-heading: var(--font-syne), sans-serif;
 }
 
@@ -15,7 +15,7 @@
    ============================================================ */
 body {
   background-color: #0A0A0A;
-  color: #F0EEE9;
+  color: #FFFFFF;
   font-family: var(--font-sans);
 }
 
@@ -26,7 +26,6 @@ body {
   --cursor-x: 50vw;
   --cursor-y: 50vh;
 }
-
 .cursor-glow-overlay {
   pointer-events: none;
   position: fixed;
@@ -34,7 +33,7 @@ body {
   z-index: 9998;
   background: radial-gradient(
     400px circle at var(--cursor-x) var(--cursor-y),
-    rgba(255, 255, 255, 0.04),
+    rgba(201, 160, 68, 0.06),
     transparent 70%
   );
   will-change: background;
@@ -47,7 +46,7 @@ body {
 .section-divider {
   height: 1px;
   width: 100%;
-  background: linear-gradient(90deg, transparent, #333333, #555555, transparent);
+  background: #1E1E1E;
   border: none;
   margin: 0;
   display: block;
@@ -62,10 +61,7 @@ body {
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   will-change: transform, opacity;
 }
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.revealed { opacity: 1; transform: translateY(0); }
 
 .reveal-stagger > * {
   opacity: 1 !important;
@@ -73,10 +69,10 @@ body {
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   will-change: transform, opacity;
 }
-.reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0s;    opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.1s;  opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.2s;  opacity: 1; transform: translateY(0); }
-.reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.3s;  opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0s;   opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
 
 /* ============================================================
    HERO SECTION
@@ -89,118 +85,106 @@ body {
   overflow: hidden;
   background: #0A0A0A;
 }
-
 @media (max-width: 768px) {
-  .hero-section {
-    height: 90vh;
-  }
+  .hero-section { height: 90vh; }
 }
 
 .hero-gradient {
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.95) 0%,
-    rgba(0, 0, 0, 0.85) 35%,
-    rgba(0, 0, 0, 0.4) 65%,
-    rgba(0, 0, 0, 0.1) 100%
+    rgba(0,0,0,0.95) 0%,
+    rgba(0,0,0,0.85) 35%,
+    rgba(0,0,0,0.3)  65%,
+    rgba(0,0,0,0.05) 100%
   );
 }
-
 @media (max-width: 768px) {
-  .hero-gradient {
-    background: rgba(0, 0, 0, 0.85);
-  }
+  .hero-gradient { background: rgba(0,0,0,0.85); }
 }
 
 .hero-content {
-  padding-left: clamp(24px, 8vw, 120px);
+  padding-left:  clamp(24px, 8vw, 120px);
   padding-right: clamp(24px, 4vw, 60px);
 }
 
 .hero-btn-primary {
-  background: #FFFFFF;
+  background: #C9A044;
   color: #000000;
-  padding: 16px 32px;
+  padding: 14px 32px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 13px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  border-radius: 0;
+  border-radius: 4px;
   border: none;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease;
   white-space: nowrap;
 }
-.hero-btn-primary:hover {
-  background: #DDDDDD;
-}
+.hero-btn-primary:hover { background: #B8902F; }
 
 .hero-btn-ghost {
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255,255,255,0.4);
   color: #FFFFFF;
-  padding: 16px 32px;
+  padding: 14px 32px;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 13px;
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  border-radius: 0;
+  border-radius: 4px;
   transition: border-color 0.2s ease, background 0.2s ease;
   white-space: nowrap;
 }
 .hero-btn-ghost:hover {
-  border-color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: #FFFFFF;
+  background: rgba(255,255,255,0.05);
 }
 
 /* ============================================================
    BUTTONS (site-wide)
    ============================================================ */
 .btn-primary {
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
-  background: #FFFFFF;
+  background: #C9A044;
   color: #000000;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
   will-change: transform;
 }
 .btn-primary:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 24px rgba(255, 255, 255, 0.2);
+  background: #B8902F;
+  transform: scale(1.02);
 }
 
 .btn-ghost {
   background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  color: #F0EEE9;
-  transition: background 0.3s ease, transform 0.3s ease;
-  will-change: transform;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #FFFFFF;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: scale(1.03);
+  border-color: #FFFFFF;
+  background: rgba(255,255,255,0.06);
 }
 
 /* ============================================================
    LOGO GLOW
    ============================================================ */
 .logo-glow:hover {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-  transition: text-shadow 0.3s ease;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
 }
 
 /* ============================================================
    NAVBAR SCROLLED STATE
    ============================================================ */
 .navbar-scrolled {
-  background: rgba(10, 10, 10, 0.9) !important;
+  background: rgba(10,10,10,0.95) !important;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   position: relative;
@@ -208,9 +192,7 @@ body {
 .navbar-scrolled::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   height: 1px;
   background: #1E1E1E;
   pointer-events: none;
@@ -224,8 +206,7 @@ body {
   50%       { transform: translateY(-4px); }
 }
 .typing-dot {
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   background: #9ca3af;
   border-radius: 50%;
   animation: bounce-dot 0.7s ease-in-out infinite;
@@ -243,21 +224,10 @@ body {
   transition: opacity 0.35s ease, transform 0.35s ease;
   will-change: transform, opacity;
 }
-.chat-msg.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.chat-typing {
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-.chat-typing.visible {
-  opacity: 1;
-}
-.chat-fade-out {
-  opacity: 0 !important;
-  transition: opacity 0.8s ease !important;
-}
+.chat-msg.visible       { opacity: 1; transform: translateY(0); }
+.chat-typing            { opacity: 0; transition: opacity 0.2s ease; }
+.chat-typing.visible    { opacity: 1; }
+.chat-fade-out          { opacity: 0 !important; transition: opacity 0.8s ease !important; }
 
 /* ============================================================
    TESTIMONIALS CAROUSEL
@@ -297,9 +267,9 @@ body {
   will-change: transform;
 }
 .service-card:hover {
-  transform: translateY(-8px);
-  border-color: #FFFFFF !important;
-  box-shadow: 0 20px 60px -10px rgba(255, 255, 255, 0.08);
+  transform: translateY(-6px);
+  border-color: #C9A044 !important;
+  box-shadow: 0 20px 60px -10px rgba(201,160,68,0.12);
 }
 
 /* ============================================================
@@ -312,26 +282,18 @@ body {
 }
 .portfolio-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
-.portfolio-card .card-overlay {
-  transition: background 0.3s ease;
-}
-.portfolio-card:hover .card-overlay {
-  background: rgba(0, 0, 0, 0.4) !important;
-}
+.portfolio-card .card-overlay  { transition: background 0.3s ease; }
+.portfolio-card:hover .card-overlay { background: rgba(0,0,0,0.35) !important; }
 .portfolio-card .card-arrow {
-  opacity: 0;
-  transform: translateX(-6px);
+  opacity: 0; transform: translateX(-6px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.portfolio-card:hover .card-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
+.portfolio-card:hover .card-arrow { opacity: 1; transform: translateX(0); }
 
 /* ============================================================
-   PULSING ONLINE DOT (contact page)
+   PULSING ONLINE DOT
    ============================================================ */
 @keyframes pulse-dot {
   0%, 100% { transform: scale(1);   opacity: 1;   }
@@ -339,8 +301,7 @@ body {
 }
 .pulse-dot {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 8px; height: 8px;
   background: #22c55e;
   border-radius: 50%;
   animation: pulse-dot 1.8s ease-in-out infinite;
@@ -348,12 +309,12 @@ body {
 }
 
 /* ============================================================
-   GRADIENT TEXT ANIMATION (About page headline)
+   GRADIENT TEXT ANIMATION (About page)
    ============================================================ */
 @keyframes gradient-cycle {
-  0%   { color: #F0EEE9; }
-  50%  { color: #AAAAAA; }
-  100% { color: #F0EEE9; }
+  0%   { color: #FFFFFF; }
+  50%  { color: #C9A044; }
+  100% { color: #FFFFFF; }
 }
 .gradient-text-animate {
   animation: gradient-cycle 4s ease-in-out infinite;
@@ -361,46 +322,40 @@ body {
 }
 
 /* ============================================================
-   FORM INPUT FOCUS (contact page)
+   FORM INPUT
    ============================================================ */
 .dark-input {
-  background: #111111;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #F0EEE9;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: #141414;
+  border: 1px solid #222222;
+  color: #FFFFFF;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
 }
-.dark-input::placeholder { color: rgba(240, 238, 233, 0.35); }
+.dark-input::placeholder { color: #555555; }
 .dark-input:focus {
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+  border-color: #C9A044;
+  box-shadow: 0 0 0 3px rgba(201,160,68,0.1);
 }
 
 /* ============================================================
    HOW IT WORKS — connecting line
    ============================================================ */
 .gradient-line {
-  background: linear-gradient(90deg, #333333, #666666);
+  background: linear-gradient(90deg, #C9A044, #888888);
 }
 
 /* ============================================================
    PREFERS-REDUCED-MOTION
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal,
-  .reveal-stagger > * {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
   .cursor-glow-overlay { display: none; }
-  .carousel-track { animation: none; }
-  .marquee-track { animation: none; }
+  .carousel-track  { animation: none; }
+  .marquee-track   { animation: none; }
 }

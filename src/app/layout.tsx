@@ -35,7 +35,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body
         className={`${syne.variable} ${inter.variable} font-sans antialiased flex flex-col min-h-screen`}
-        style={{ background: "#0A0A0F", color: "#F0EEE9" }}
+        style={{ background: "#0A0A0A", color: "#FFFFFF" }}
         suppressHydrationWarning
       >
         <CursorGlow />

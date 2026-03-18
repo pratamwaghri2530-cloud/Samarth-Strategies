@@ -1,14 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
-const IMAGES = [
-  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600",
-  "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1600",
-  "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600",
-  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600",
+const VIDEOS = [
+  "/hero-video-1.mp4",
+  "/hero-video-2.mp4",
+  "/hero-video-3.mp4",
 ];
 
 export default function HeroSection() {
@@ -16,45 +14,45 @@ export default function HeroSection() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % IMAGES.length);
-    }, 2500);
+      setActive((prev) => (prev + 1) % VIDEOS.length);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
 
   return (
     <section className="hero-section">
-      {/* Background images — crossfade */}
-      {IMAGES.map((src, i) => (
-        <div
+      {/* Crossfading video backgrounds */}
+      {VIDEOS.map((src, i) => (
+        <video
           key={i}
+          src={src}
+          autoPlay
+          muted
+          loop
+          playsInline
           style={{
             position: "absolute",
             inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
             opacity: i === active ? 1 : 0,
-            transition: "opacity 0.8s ease-in-out",
+            transition: "opacity 1s ease-in-out",
             zIndex: 0,
           }}
-        >
-          <Image
-            src={src}
-            alt=""
-            fill
-            priority={i === 0}
-            sizes="100vw"
-            style={{ objectFit: "cover", objectPosition: "center" }}
-          />
-        </div>
+        />
       ))}
 
       {/* Gradient overlay */}
       <div className="hero-gradient" style={{ position: "absolute", inset: 0, zIndex: 1 }} />
 
-      {/* Content — left-aligned */}
+      {/* Content */}
       <div
         className="hero-content"
         style={{ position: "relative", zIndex: 2, height: "100%", display: "flex", alignItems: "center" }}
       >
         <div style={{ maxWidth: "580px" }}>
+
           {/* Label */}
           <p
             className="font-sans"
@@ -105,25 +103,11 @@ export default function HeroSection() {
           </p>
 
           {/* CTA Buttons */}
-          <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              flexWrap: "wrap",
-              marginBottom: "48px",
-            }}
-          >
-            <Link
-              href="/contact"
-              className="font-sans hero-btn-primary"
-            >
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "48px" }}>
+            <Link href="/contact" className="font-sans hero-btn-primary">
               GET FREE AUDIT →
             </Link>
-
-            <Link
-              href="/portfolio"
-              className="font-sans hero-btn-ghost"
-            >
+            <Link href="/portfolio" className="font-sans hero-btn-ghost">
               SEE OUR WORK
             </Link>
           </div>
@@ -133,30 +117,18 @@ export default function HeroSection() {
             {["3+ Clients", "100% On-Time", "3 sec Response"].map((label, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center" }}>
                 {i > 0 && (
-                  <div
-                    style={{
-                      width: "1px",
-                      height: "16px",
-                      background: "#444444",
-                      margin: "0 16px",
-                      flexShrink: 0,
-                    }}
-                  />
+                  <div style={{ width: "1px", height: "16px", background: "#333333", margin: "0 16px", flexShrink: 0 }} />
                 )}
                 <span
                   className="font-sans"
-                  style={{
-                    color: "#888888",
-                    fontSize: "11px",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                  }}
+                  style={{ color: "#888888", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase" }}
                 >
                   {label}
                 </span>
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </section>

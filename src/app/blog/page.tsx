@@ -6,7 +6,7 @@ import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: "Blog & Insights | Samarth Strategies",
-  description: "Digital marketing tips, local SEO guides, and business growth strategies for Indian offline businesses.",
+  description: "Digital marketing tips, local SEO guides, and business growth strategies for local businesses.",
 };
 
 export default function BlogIndexPage() {
@@ -18,7 +18,7 @@ export default function BlogIndexPage() {
       date: "March 15, 2026",
       readTime: "5 min read",
       slug: "why-your-clinic-loses-patients-after-7pm",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800",
+      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800",
     },
     {
       title: "The ₹12,000 Website That Pays for Itself in a Week",
@@ -27,7 +27,7 @@ export default function BlogIndexPage() {
       date: "March 8, 2026",
       readTime: "4 min read",
       slug: "website-that-pays-for-itself",
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800",
+      image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800",
     },
     {
       title: "How We Built a WhatsApp Bot in One Night for a Chiropractic Clinic",
@@ -36,7 +36,7 @@ export default function BlogIndexPage() {
       date: "February 28, 2026",
       readTime: "6 min read",
       slug: "whatsapp-bot-chiropractic-clinic",
-      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800",
     },
     {
       title: "5 Reasons Your Google Business Profile is Costing You Customers",
@@ -45,7 +45,7 @@ export default function BlogIndexPage() {
       date: "February 20, 2026",
       readTime: "7 min read",
       slug: "google-business-profile-mistakes",
-      image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
     },
   ];
 
@@ -53,33 +53,29 @@ export default function BlogIndexPage() {
     <>
       <section
         className="pt-36 pb-20 md:pt-48 md:pb-28 text-center reveal"
-        style={{ background: "#0A0A0F", borderBottom: "1px solid rgba(240,238,233,0.06)" }}
+        style={{ background: "#0A0A0A", borderBottom: "1px solid #1E1E1E" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1
             className="font-heading font-extrabold mb-6 leading-tight"
-            style={{ fontSize: "clamp(36px, 7vw, 72px)", color: "#F0EEE9", letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(36px, 7vw, 72px)", color: "#FFFFFF", letterSpacing: "-0.02em" }}
           >
-            Insights &amp;{" "}
-            <span style={{ color: "#F97316" }}>Strategies</span>
+            Insights &amp; Strategies
           </h1>
-          <p
-            className="font-sans leading-relaxed max-w-3xl mx-auto"
-            style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "rgba(240,238,233,0.65)" }}
-          >
+          <p className="font-sans leading-relaxed max-w-3xl mx-auto" style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "#888888" }}>
             Actionable advice, guides, and real stories to help you grow your business online.
           </p>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 reveal" style={{ background: "#0A0A0F" }}>
+      <section className="py-16 md:py-24 reveal" style={{ background: "#0A0A0A" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {posts.map((post, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {posts.map((post, i) => (
               <article
-                key={index}
-                className="rounded-2xl overflow-hidden flex flex-col h-full"
-                style={{ background: "#13131A", border: "1px solid rgba(240,238,233,0.08)" }}
+                key={i}
+                className="flex flex-col h-full"
+                style={{ background: "#141414", border: "1px solid #222222", borderRadius: "4px", overflow: "hidden" }}
               >
                 <div className="aspect-video relative overflow-hidden">
                   <Image
@@ -92,53 +88,39 @@ export default function BlogIndexPage() {
                 </div>
 
                 <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-4 mb-4 flex-wrap">
                     <span
-                      className="font-sans font-semibold text-xs tracking-wider px-3 py-1 rounded-full"
-                      style={{ background: "rgba(249,115,22,0.1)", color: "#F97316" }}
+                      className="font-sans font-medium text-xs tracking-wider px-3 py-1"
+                      style={{ background: "rgba(201,160,68,0.1)", color: "#C9A044", border: "1px solid rgba(201,160,68,0.25)", borderRadius: "2px" }}
                     >
                       {post.category}
                     </span>
-                    <span
-                      className="font-sans text-xs flex items-center gap-1"
-                      style={{ color: "rgba(240,238,233,0.4)" }}
-                    >
-                      <Calendar size={12} />
-                      {post.date}
+                    <span className="font-sans text-xs flex items-center gap-1" style={{ color: "#555555" }}>
+                      <Calendar size={11} />{post.date}
                     </span>
-                    <span
-                      className="font-sans text-xs flex items-center gap-1"
-                      style={{ color: "rgba(240,238,233,0.4)" }}
-                    >
-                      <Clock size={12} />
-                      {post.readTime}
+                    <span className="font-sans text-xs flex items-center gap-1" style={{ color: "#555555" }}>
+                      <Clock size={11} />{post.readTime}
                     </span>
                   </div>
 
                   <h2
                     className="font-heading font-bold mb-3"
-                    style={{ fontSize: "clamp(18px, 2vw, 22px)", color: "#F0EEE9", lineHeight: 1.3 }}
+                    style={{ fontSize: "clamp(18px, 2vw, 22px)", color: "#FFFFFF", lineHeight: 1.3 }}
                   >
                     {post.title}
                   </h2>
 
-                  <p
-                    className="font-sans leading-relaxed mb-6 flex-grow"
-                    style={{ color: "rgba(240,238,233,0.6)", fontSize: "15px" }}
-                  >
+                  <p className="font-sans leading-relaxed mb-6 flex-grow" style={{ color: "#888888", fontSize: "15px" }}>
                     {post.excerpt}
                   </p>
 
-                  <div
-                    className="pt-6 flex items-center justify-between mt-auto"
-                    style={{ borderTop: "1px solid rgba(240,238,233,0.08)" }}
-                  >
+                  <div className="pt-5 flex items-center justify-between mt-auto" style={{ borderTop: "1px solid #1E1E1E" }}>
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="font-sans font-semibold flex items-center gap-1 transition-colors"
-                      style={{ color: "#F97316", fontSize: "14px" }}
+                      className="font-sans font-medium flex items-center gap-1 transition-colors"
+                      style={{ color: "#C9A044", fontSize: "13px", letterSpacing: "0.05em" }}
                     >
-                      Read Article <ArrowRight size={16} />
+                      Read Article <ArrowRight size={14} />
                     </Link>
                   </div>
                 </div>

@@ -7,63 +7,45 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer
-      style={{
-        background: "#13131A",
-        borderTop: "none",
-        position: "relative",
-      }}
-    >
-      {/* Gradient top border */}
-      <div
-        style={{
-          height: "1px",
-          background: "linear-gradient(90deg, #F97316, #6366F1)",
-        }}
-      />
-
+    <footer style={{ background: "#0A0A0A", borderTop: "1px solid #1E1E1E" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Column 1: Brand */}
+
+          {/* Brand */}
           <div className="flex flex-col">
             <Link
               href="/"
-              className="logo-glow font-heading font-bold text-2xl tracking-tight mb-4 inline-flex items-center"
-              style={{ color: "#F0EEE9" }}
+              className="logo-glow font-heading font-bold text-2xl tracking-tight mb-4"
+              style={{ color: "#FFFFFF" }}
             >
-              <span style={{ color: "#F97316" }}>S</span>amarth
-              <span className="ml-1" style={{ color: "#F97316" }}>S</span>trategies
+              Samarth Strategies
             </Link>
             <p
               className="font-sans mb-6 leading-relaxed max-w-xs"
-              style={{ color: "rgba(240,238,233,0.45)", fontSize: "14px" }}
+              style={{ color: "#555555", fontSize: "14px" }}
             >
               Helping local businesses compete online — everywhere.
             </p>
             <div className="flex items-center gap-3">
               {[
-                { Icon: Instagram, href: "#" },
-                { Icon: Linkedin,  href: "#" },
-                { Icon: MessageCircle, href: "#" },
+                { Icon: Instagram,     href: "#" },
+                { Icon: Linkedin,      href: "#" },
+                { Icon: MessageCircle, href: "https://wa.me/918850840056" },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
                   href={href}
-                  className="flex items-center justify-center rounded-full transition-all duration-300"
-                  style={{
-                    width: "40px", height: "40px",
-                    background: "rgba(240,238,233,0.06)",
-                    color: "rgba(240,238,233,0.5)",
-                  }}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="flex items-center justify-center rounded-sm transition-all duration-200"
+                  style={{ width: "40px", height: "40px", background: "#141414", color: "#555555", border: "1px solid #222222" }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = "#F97316";
-                    (e.currentTarget as HTMLElement).style.background = "rgba(249,115,22,0.12)";
-                    (e.currentTarget as HTMLElement).style.transform = "scale(1.1)";
+                    (e.currentTarget as HTMLElement).style.color = "#C9A044";
+                    (e.currentTarget as HTMLElement).style.borderColor = "#C9A044";
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = "rgba(240,238,233,0.5)";
-                    (e.currentTarget as HTMLElement).style.background = "rgba(240,238,233,0.06)";
-                    (e.currentTarget as HTMLElement).style.transform = "scale(1)";
+                    (e.currentTarget as HTMLElement).style.color = "#555555";
+                    (e.currentTarget as HTMLElement).style.borderColor = "#222222";
                   }}
                 >
                   <Icon size={18} />
@@ -72,25 +54,26 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Services */}
+          {/* Services */}
           <div>
-            <h4 className="font-heading font-bold mb-6" style={{ color: "#F0EEE9", fontSize: "16px" }}>
+            <h4 className="font-heading font-bold mb-6" style={{ color: "#FFFFFF", fontSize: "14px", letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Services
             </h4>
             <ul className="space-y-3">
               {[
-                ["Web Development",  "/services/web-development"],
-                ["AI Automations",   "/services/ai-automations"],
-                ["Google Ads",       "/services/google-ads"],
-                ["SEO Optimization", "/services/seo-optimization"],
+                ["Web Development",       "/services/web-development"],
+                ["AI Automation & Agents","/services/ai-automations"],
+                ["Google Ads",            "/services/google-ads"],
+                ["SEO Optimization",      "/services/seo-optimization"],
+                ["AI Strategy",           "/services/ai-automations"],
               ].map(([label, href]) => (
                 <li key={label}>
                   <Link
                     href={href}
                     className="font-sans text-sm transition-colors duration-200"
-                    style={{ color: "rgba(240,238,233,0.45)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#F97316")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,238,233,0.45)")}
+                    style={{ color: "#555555" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#C9A044")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#555555")}
                   >
                     {label}
                   </Link>
@@ -99,9 +82,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Company */}
+          {/* Company */}
           <div>
-            <h4 className="font-heading font-bold mb-6" style={{ color: "#F0EEE9", fontSize: "16px" }}>
+            <h4 className="font-heading font-bold mb-6" style={{ color: "#FFFFFF", fontSize: "14px", letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Company
             </h4>
             <ul className="space-y-3">
@@ -115,9 +98,9 @@ export default function Footer() {
                   <Link
                     href={href}
                     className="font-sans text-sm transition-colors duration-200"
-                    style={{ color: "rgba(240,238,233,0.45)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#F97316")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,238,233,0.45)")}
+                    style={{ color: "#555555" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#C9A044")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#555555")}
                   >
                     {label}
                   </Link>
@@ -126,18 +109,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact */}
+          {/* Contact */}
           <div>
-            <h4 className="font-heading font-bold mb-6" style={{ color: "#F0EEE9", fontSize: "16px" }}>
+            <h4 className="font-heading font-bold mb-6" style={{ color: "#FFFFFF", fontSize: "14px", letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Contact Us
             </h4>
-            <ul className="space-y-3 font-sans text-sm" style={{ color: "rgba(240,238,233,0.45)" }}>
+            <ul className="space-y-3 font-sans text-sm" style={{ color: "#555555" }}>
               <li>hello@samarthstrategies.com</li>
               <li>+91 8850840056</li>
-              <li
-                className="pt-2 text-xs font-medium tracking-widest uppercase"
-                style={{ color: "rgba(240,238,233,0.3)" }}
-              >
+              <li className="pt-2 text-xs font-medium tracking-widest uppercase" style={{ color: "#444444" }}>
                 Available IST &amp; EST
               </li>
             </ul>
@@ -147,26 +127,23 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
-          style={{ borderTop: "1px solid rgba(240,238,233,0.06)" }}
+          style={{ borderTop: "1px solid #1E1E1E" }}
         >
-          <p className="font-sans text-sm text-center" style={{ color: "rgba(240,238,233,0.3)" }}>
+          <p className="font-sans text-sm text-center" style={{ color: "#444444" }}>
             © {currentYear} Samarth Strategies. All rights reserved.
           </p>
-          <p className="font-sans text-sm text-center" style={{ color: "rgba(240,238,233,0.3)" }}>
+          <p className="font-sans text-sm text-center" style={{ color: "#444444" }}>
             Built with ❤️ in Mumbai
           </p>
           <div className="flex gap-6">
-            {[
-              ["Privacy Policy", "/privacy"],
-              ["Terms of Service", "/terms"],
-            ].map(([label, href]) => (
+            {[["Privacy Policy", "/privacy"], ["Terms of Service", "/terms"]].map(([label, href]) => (
               <Link
                 key={label}
                 href={href}
                 className="font-sans text-sm transition-colors duration-200"
-                style={{ color: "rgba(240,238,233,0.3)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#F0EEE9")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,238,233,0.3)")}
+                style={{ color: "#444444" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#444444")}
               >
                 {label}
               </Link>

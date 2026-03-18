@@ -6,16 +6,7 @@ import { MessageCircle } from "lucide-react";
 const whatsappUrl =
   "https://wa.me/918850840056?text=Hi%20Samarth%20Strategies!%20I%20would%20like%20to%20book%20a%20free%20consultation.";
 
-const articles: Record<
-  string,
-  {
-    title: string;
-    category: string;
-    date: string;
-    readTime: string;
-    content: string[];
-  }
-> = {
+const articles: Record<string, { title: string; category: string; date: string; readTime: string; content: string[] }> = {
   "why-your-clinic-loses-patients-after-7pm": {
     title: "Why Your Clinic Is Losing Patients After 7 PM",
     category: "AI AUTOMATION",
@@ -96,66 +87,53 @@ export async function generateStaticParams() {
   return Object.keys(articles).map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const article = articles[slug];
   if (!article) return {};
-  return {
-    title: `${article.title} | Samarth Strategies`,
-    description: article.content[0],
-  };
+  return { title: `${article.title} | Samarth Strategies`, description: article.content[0] };
 }
 
-export default async function BlogArticlePage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = articles[slug];
   if (!article) notFound();
 
   return (
     <>
-      {/* Header */}
       <section
         className="pt-36 pb-12 md:pt-48 md:pb-16"
-        style={{ background: "#0A0A0F", borderBottom: "1px solid rgba(240,238,233,0.06)" }}
+        style={{ background: "#0A0A0A", borderBottom: "1px solid #1E1E1E" }}
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-6">
             <span
-              className="font-sans font-semibold text-xs tracking-wider px-3 py-1 rounded-full"
-              style={{ background: "rgba(249,115,22,0.1)", color: "#F97316" }}
+              className="font-sans font-medium text-xs tracking-wider px-3 py-1"
+              style={{ background: "rgba(201,160,68,0.1)", color: "#C9A044", border: "1px solid rgba(201,160,68,0.25)", borderRadius: "2px" }}
             >
               {article.category}
             </span>
-            <span className="font-sans text-sm" style={{ color: "rgba(240,238,233,0.4)" }}>
+            <span className="font-sans text-sm" style={{ color: "#555555" }}>
               {article.date} · {article.readTime}
             </span>
           </div>
           <h1
             className="font-heading font-extrabold leading-tight"
-            style={{ fontSize: "clamp(28px, 5vw, 52px)", color: "#F0EEE9", letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(28px, 5vw, 52px)", color: "#FFFFFF", letterSpacing: "-0.02em" }}
           >
             {article.title}
           </h1>
         </div>
       </section>
 
-      {/* Body */}
-      <section className="py-16" style={{ background: "#0A0A0F" }}>
+      <section className="py-16" style={{ background: "#0A0A0A" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6">
             {article.content.map((para, i) => (
               <p
                 key={i}
                 className="font-sans leading-relaxed whitespace-pre-line"
-                style={{ fontSize: "17px", color: "rgba(240,238,233,0.75)" }}
+                style={{ fontSize: "17px", color: "#888888" }}
               >
                 {para}
               </p>
@@ -164,26 +142,21 @@ export default async function BlogArticlePage({
 
           {/* CTA */}
           <div
-            className="mt-16 rounded-2xl p-8 text-center"
-            style={{ background: "#13131A", border: "1px solid rgba(249,115,22,0.2)" }}
+            className="mt-16 p-8 text-center"
+            style={{ background: "#141414", border: "1px solid #222222", borderRadius: "4px" }}
           >
-            <p
-              className="font-heading font-bold mb-4"
-              style={{ fontSize: "22px", color: "#F0EEE9" }}
-            >
+            <p className="font-heading font-bold mb-3" style={{ fontSize: "22px", color: "#FFFFFF" }}>
               Want this for your business?
             </p>
-            <p
-              className="font-sans mb-6"
-              style={{ color: "rgba(240,238,233,0.6)", fontSize: "15px" }}
-            >
+            <p className="font-sans mb-6" style={{ color: "#888888", fontSize: "15px" }}>
               Chat with us on WhatsApp — we respond instantly.
             </p>
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-lg font-sans font-medium tracking-[0.1em] uppercase text-sm"
+              className="btn-primary inline-flex items-center gap-2 px-8 py-4 font-sans font-medium tracking-[0.08em] uppercase text-sm"
+              style={{ borderRadius: "4px" }}
             >
               <MessageCircle size={18} />
               Chat on WhatsApp
@@ -191,11 +164,7 @@ export default async function BlogArticlePage({
           </div>
 
           <div className="mt-10 text-center">
-            <Link
-              href="/blog"
-              className="font-sans text-sm"
-              style={{ color: "rgba(240,238,233,0.4)" }}
-            >
+            <Link href="/blog" className="font-sans text-sm transition-colors" style={{ color: "#555555" }}>
               ← Back to all articles
             </Link>
           </div>

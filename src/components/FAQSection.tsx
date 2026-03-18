@@ -26,50 +26,38 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-20 md:py-28 reveal" style={{ background: "#0A0A0F" }}>
+    <section className="py-20 md:py-28 reveal" style={{ background: "#0A0A0A" }}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <h2
-            className="font-heading font-bold mb-4"
-            style={{ fontSize: "clamp(28px, 5vw, 48px)", color: "#F0EEE9" }}
-          >
+          <h2 className="font-heading font-bold mb-4" style={{ fontSize: "clamp(28px, 5vw, 48px)", color: "#FFFFFF" }}>
             Common Questions
           </h2>
         </div>
-
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="rounded-2xl overflow-hidden"
-              style={{ background: "#13131A", border: "1px solid rgba(249,115,22,0.15)" }}
+              style={{ background: "#141414", border: "1px solid #222222", borderRadius: "4px", overflow: "hidden" }}
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between px-8 py-6 text-left"
+                className="w-full flex items-center justify-between px-8 py-5 text-left"
               >
-                <span
-                  className="font-heading font-bold pr-6"
-                  style={{ fontSize: "17px", color: "#F97316" }}
-                >
+                <span className="font-sans font-medium pr-6" style={{ fontSize: "16px", color: "#FFFFFF" }}>
                   {faq.q}
                 </span>
                 <ChevronDown
-                  size={20}
+                  size={18}
                   style={{
-                    color: "#F97316",
+                    color: "#C9A044",
                     flexShrink: 0,
                     transition: "transform 0.2s",
                     transform: open === i ? "rotate(180deg)" : "rotate(0deg)",
                   }}
                 />
               </button>
-
               {open === i && (
-                <div
-                  className="px-8 pb-6 font-sans leading-relaxed"
-                  style={{ color: "rgba(240,238,233,0.7)", fontSize: "15px" }}
-                >
+                <div className="px-8 pb-6 font-sans leading-relaxed" style={{ color: "#888888", fontSize: "15px" }}>
                   {faq.a}
                 </div>
               )}

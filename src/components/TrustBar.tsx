@@ -13,10 +13,8 @@ function MarqueeRow() {
     <span className="font-sans" style={{ whiteSpace: "nowrap" }}>
       {clients.map((client, i) => (
         <span key={i}>
-          <span style={{ color: "#555555", fontSize: "13px", letterSpacing: "0.1em" }}>
-            {client}
-          </span>
-          <span style={{ color: "#333333", margin: "0 20px" }}>·</span>
+          <span style={{ color: "#444444", fontSize: "12px", letterSpacing: "0.1em" }}>{client}</span>
+          <span style={{ color: "#2A2A2A", margin: "0 24px" }}>·</span>
         </span>
       ))}
     </span>
@@ -26,34 +24,14 @@ function MarqueeRow() {
 export default function TrustBar() {
   return (
     <div
-      style={{
-        background: "#0A0A0A",
-        borderTop: "1px solid #1E1E1E",
-        padding: "20px 0",
-        overflow: "hidden",
-        display: "flex",
-        alignItems: "center",
-      }}
+      style={{ background: "#0A0A0A", borderTop: "1px solid #1E1E1E", padding: "18px 0", overflow: "hidden", display: "flex", alignItems: "center" }}
     >
-      {/* Label */}
       <div
         className="font-sans"
-        style={{
-          flexShrink: 0,
-          padding: "0 28px 0 32px",
-          color: "#444444",
-          fontSize: "11px",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          whiteSpace: "nowrap",
-          borderRight: "1px solid #1E1E1E",
-          marginRight: "32px",
-        }}
+        style={{ flexShrink: 0, padding: "0 28px 0 32px", color: "#333333", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", whiteSpace: "nowrap", borderRight: "1px solid #1E1E1E", marginRight: "32px" }}
       >
         TRUSTED BY
       </div>
-
-      {/* Scrolling marquee */}
       <div style={{ overflow: "hidden", flex: 1 }}>
         <div className="marquee-track">
           <MarqueeRow />

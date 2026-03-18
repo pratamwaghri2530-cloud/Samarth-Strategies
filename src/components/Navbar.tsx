@@ -31,14 +31,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
+
           {/* Logo */}
           <Link
             href="/"
-            className="logo-glow font-heading font-bold text-2xl tracking-tight flex items-center transition-all duration-300"
-            style={{ color: "#F0EEE9" }}
+            className="logo-glow font-heading font-bold text-2xl tracking-tight"
+            style={{ color: "#FFFFFF" }}
           >
-            <span style={{ color: "#F97316" }}>S</span>amarth
-            <span className="ml-1" style={{ color: "#F97316" }}>S</span>trategies
+            Samarth Strategies
           </Link>
 
           {/* Desktop Nav */}
@@ -48,16 +48,17 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className="font-sans font-medium text-sm transition-colors duration-200"
-                style={{ color: "rgba(240,238,233,0.7)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#F97316")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,238,233,0.7)")}
+                style={{ color: "#AAAAAA" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#AAAAAA")}
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="btn-primary px-5 py-2.5 rounded-lg font-sans font-medium text-sm tracking-[0.05em] uppercase"
+              className="btn-primary px-5 py-2.5 font-sans font-medium text-sm tracking-[0.05em] uppercase"
+              style={{ borderRadius: "4px" }}
             >
               Get Free Audit
             </Link>
@@ -67,7 +68,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              style={{ color: "#F0EEE9" }}
+              style={{ color: "#FFFFFF" }}
               className="focus:outline-none"
               aria-label="Toggle menu"
             >
@@ -81,15 +82,15 @@ export default function Navbar() {
       {isOpen && (
         <div
           className="md:hidden absolute w-full shadow-2xl"
-          style={{ background: "#0A0A0F", borderBottom: "1px solid rgba(249,115,22,0.2)" }}
+          style={{ background: "#0A0A0A", borderBottom: "1px solid #222222" }}
         >
           <div className="px-4 pt-2 pb-6 flex flex-col space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="block px-3 py-3 font-sans font-medium rounded-lg transition-colors"
-                style={{ color: "rgba(240,238,233,0.75)" }}
+                className="block px-3 py-3 font-sans font-medium transition-colors"
+                style={{ color: "#888888" }}
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
@@ -97,7 +98,8 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="btn-primary block px-3 py-3 mt-4 text-center rounded-lg font-sans font-medium tracking-[0.05em] uppercase"
+              className="btn-primary block px-3 py-3 mt-4 text-center font-sans font-medium tracking-[0.05em] uppercase"
+              style={{ borderRadius: "4px" }}
               onClick={() => setIsOpen(false)}
             >
               Get Free Audit

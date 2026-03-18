@@ -11,19 +11,23 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      {/* Page Header */}
-      <section className="bg-gray-light pt-32 pb-16 md:pt-40 md:pb-20 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
-            Digital Solutions for <span className="text-primary">Real Growth</span>
+      <section
+        className="pt-36 pb-16 md:pt-48 md:pb-24 text-center"
+        style={{ background: "#0A0A0A", borderBottom: "1px solid #1E1E1E" }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1
+            className="font-heading font-extrabold mb-6"
+            style={{ fontSize: "clamp(36px, 6vw, 64px)", color: "#FFFFFF", letterSpacing: "-0.02em" }}
+          >
+            Digital Solutions for Real Growth
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We don't just build websites; we build scalable digital engines that drive traffic, capture leads, and increase your revenue.
+          <p className="font-sans leading-relaxed max-w-3xl mx-auto" style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "#888888" }}>
+            We don&apos;t just build websites — we build scalable digital engines that drive traffic,
+            capture leads, and increase your revenue.
           </p>
         </div>
       </section>
-
-      {/* Reusing existing components */}
       <ServicesGrid />
       <HowItWorks />
       <CTASection />

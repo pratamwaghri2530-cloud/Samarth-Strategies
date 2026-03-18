@@ -26,79 +26,44 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 md:py-32 reveal" style={{ background: "#0A0A0F" }}>
+    <section className="py-20 md:py-32 reveal" style={{ background: "#0A0A0A" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
         <div className="text-center mb-20">
-          <h2
-            className="font-heading font-bold mb-4"
-            style={{ fontSize: "clamp(28px, 5vw, 48px)", color: "#F0EEE9" }}
-          >
+          <h2 className="font-heading font-bold mb-4" style={{ fontSize: "clamp(28px, 5vw, 48px)", color: "#FFFFFF" }}>
             How It Works
           </h2>
-          <p className="font-sans max-w-2xl mx-auto" style={{ color: "rgba(240,238,233,0.65)", fontSize: "18px" }}>
+          <p className="font-sans max-w-2xl mx-auto" style={{ color: "#888888", fontSize: "18px" }}>
             A simple, transparent process to take your business from offline to online success.
           </p>
         </div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Connecting gradient line (desktop) */}
           <div
-            className="hidden md:block absolute h-[2px] gradient-line"
+            className="hidden md:block absolute h-[1px] gradient-line"
             style={{ top: "52px", left: "calc(16.66% + 32px)", right: "calc(16.66% + 32px)", zIndex: 0 }}
           />
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 relative z-10">
-            {steps.map((step, index) => (
-              <div
-                key={index}
-                className="reveal flex flex-col items-center text-center relative"
-                style={{ transitionDelay: `${index * 0.15}s` }}
-              >
-                {/* Large background number */}
+            {steps.map((step, i) => (
+              <div key={i} className="reveal flex flex-col items-center text-center relative" style={{ transitionDelay: `${i * 0.15}s` }}>
                 <div
                   className="absolute font-heading font-extrabold select-none pointer-events-none"
-                  style={{
-                    fontSize: "80px",
-                    color: "rgba(249,115,22,0.08)",
-                    top: "-20px",
-                    lineHeight: 1,
-                    zIndex: 0,
-                  }}
+                  style={{ fontSize: "80px", color: "rgba(201,160,68,0.06)", top: "-20px", lineHeight: 1, zIndex: 0 }}
                 >
                   {step.number}
                 </div>
-
-                {/* Step circle */}
                 <div
-                  className="relative z-10 flex items-center justify-center rounded-full mb-6 transition-all duration-300"
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    background: "#13131A",
-                    border: "2px solid rgba(249,115,22,0.3)",
-                  }}
+                  className="relative z-10 flex items-center justify-center rounded-sm mb-6"
+                  style={{ width: "80px", height: "80px", background: "#141414", border: "1px solid #222222" }}
                 >
                   <span style={{ fontSize: "28px" }}>{step.icon}</span>
                 </div>
-
-                <h3
-                  className="font-heading font-bold mb-2 relative z-10"
-                  style={{ fontSize: "22px", color: "#F0EEE9" }}
-                >
+                <h3 className="font-heading font-bold mb-2 relative z-10" style={{ fontSize: "22px", color: "#FFFFFF" }}>
                   {step.title}
                 </h3>
-                <p
-                  className="font-sans leading-relaxed max-w-xs relative z-10 mb-3"
-                  style={{ color: "rgba(240,238,233,0.6)" }}
-                >
+                <p className="font-sans leading-relaxed max-w-xs relative z-10 mb-3" style={{ color: "#888888" }}>
                   {step.description}
                 </p>
-                <p
-                  className="font-sans leading-relaxed max-w-xs relative z-10 text-sm"
-                  style={{ color: "rgba(240,238,233,0.4)" }}
-                >
+                <p className="font-sans leading-relaxed max-w-xs relative z-10 text-sm" style={{ color: "#555555" }}>
                   {step.subtitle}
                 </p>
               </div>

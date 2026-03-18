@@ -74,86 +74,59 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <section className="py-20 md:py-32 reveal" style={{ background: "#0A0A0F" }}>
+    <section className="py-20 md:py-32 reveal" style={{ background: "#0A0A0A" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
         <div className="text-center mb-16">
           <h2
             className="font-heading font-bold mb-4"
-            style={{ fontSize: "clamp(28px, 5vw, 48px)", color: "#F0EEE9" }}
+            style={{ fontSize: "clamp(28px, 5vw, 48px)", color: "#FFFFFF" }}
           >
             What We Do
           </h2>
-          <p
-            className="font-sans max-w-2xl mx-auto"
-            style={{ color: "rgba(240,238,233,0.65)", fontSize: "18px" }}
-          >
+          <p className="font-sans max-w-2xl mx-auto" style={{ color: "#888888", fontSize: "18px" }}>
             Comprehensive digital solutions designed to help local businesses thrive online.
           </p>
         </div>
 
-        {/* Grid */}
         <div className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.title}
-                className="service-card rounded-2xl p-8 flex flex-col"
-                style={{
-                  background: "#13131A",
-                  border: "1px solid rgba(249,115,22,0.2)",
-                  borderRadius: "16px",
-                }}
+                className="service-card flex flex-col p-8"
+                style={{ background: "#141414", border: "1px solid #222222", borderRadius: "4px" }}
               >
-                {/* Icon */}
                 <div
-                  className="inline-flex items-center justify-center rounded-xl mb-6 flex-shrink-0"
-                  style={{ width: "52px", height: "52px", background: "rgba(249,115,22,0.1)" }}
+                  className="inline-flex items-center justify-center mb-6 flex-shrink-0"
+                  style={{ width: "48px", height: "48px", background: "rgba(201,160,68,0.08)", border: "1px solid rgba(201,160,68,0.2)", borderRadius: "4px" }}
                 >
-                  <Icon className="w-6 h-6" style={{ color: "#F97316" }} />
+                  <Icon className="w-5 h-5" style={{ color: "#C9A044" }} />
                 </div>
 
-                {/* Title */}
-                <h3
-                  className="font-heading font-bold mb-3"
-                  style={{ fontSize: "20px", color: "#F0EEE9" }}
-                >
+                <h3 className="font-heading font-bold mb-3" style={{ fontSize: "18px", color: "#FFFFFF" }}>
                   {service.title}
                 </h3>
 
-                {/* Description */}
-                <p
-                  className="font-sans mb-5 leading-relaxed"
-                  style={{ color: "rgba(240,238,233,0.6)", fontSize: "14px" }}
-                >
+                <p className="font-sans mb-5 leading-relaxed" style={{ color: "#888888", fontSize: "14px" }}>
                   {service.description}
                 </p>
 
-                {/* Sub-points */}
-                <ul className="space-y-1.5 mb-6 flex-grow">
+                <ul className="space-y-2 mb-6 flex-grow">
                   {service.points.map((point) => (
-                    <li
-                      key={point}
-                      className="flex items-start gap-2 font-sans"
-                      style={{ fontSize: "13px", color: "rgba(240,238,233,0.5)" }}
-                    >
-                      <span
-                        className="flex-shrink-0 mt-1 rounded-full"
-                        style={{ width: "5px", height: "5px", background: "#F97316", opacity: 0.7 }}
-                      />
+                    <li key={point} className="flex items-start gap-2 font-sans" style={{ fontSize: "13px", color: "#555555" }}>
+                      <span className="flex-shrink-0 mt-1.5" style={{ width: "4px", height: "4px", background: "#C9A044", borderRadius: "50%", display: "inline-block" }} />
                       {point}
                     </li>
                   ))}
                 </ul>
 
-                {/* Link */}
                 <Link
                   href={`/services/${service.slug}`}
                   className="inline-flex items-center font-sans font-medium text-xs tracking-[0.08em] uppercase mt-auto transition-colors duration-200"
-                  style={{ color: "#F97316" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#6366F1")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#F97316")}
+                  style={{ color: "#C9A044" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#C9A044")}
                 >
                   Learn More →
                 </Link>
