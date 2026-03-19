@@ -78,6 +78,7 @@ body {
    HERO SECTION
    ============================================================ */
 .hero-section {
+  padding-top: 200px;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -153,6 +154,7 @@ body {
 .btn-primary {
   background: #C9A044;
   color: #000000;
+  font-weight: 700;
   transition: background 0.2s ease, transform 0.2s ease;
   will-change: transform;
 }
@@ -181,21 +183,104 @@ body {
 }
 
 /* ============================================================
-   NAVBAR SCROLLED STATE
+   NAVBAR — BASE (sticky always)
    ============================================================ */
-.navbar-scrolled {
-  background: rgba(10,10,10,0.95) !important;
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  position: relative;
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition:
+    background 0.4s ease,
+    backdrop-filter 0.4s ease,
+    -webkit-backdrop-filter 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
 }
+
+/* At top of page — fully transparent */
+.navbar-top {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+}
+
+/* After scrolling — frosted glass */
+.navbar-scrolled {
+  background: rgba(10, 10, 10, 0.65);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Subtle gold shimmer on the bottom border when scrolled */
 .navbar-scrolled::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
   height: 1px;
-  background: #1E1E1E;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 160, 68, 0.35) 50%,
+    transparent
+  );
   pointer-events: none;
+}
+
+/* ============================================================
+   NAV LINKS — improved visibility
+   ============================================================ */
+.nav-link {
+  color: #CCCCCC;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #C9A044;
+  transition: width 0.25s ease;
+}
+.nav-link:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 12px rgba(201, 160, 68, 0.3);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
+.mobile-menu {
+  background: rgba(10, 10, 10, 0.92);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-link {
+  color: #CCCCCC;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.mobile-nav-link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* ============================================================
