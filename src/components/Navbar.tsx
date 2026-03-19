@@ -9,7 +9,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -23,21 +23,12 @@ export default function Navbar() {
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "navbar-scrolled py-3" : "py-5"
-      }`}
-      style={!scrolled ? { background: "transparent" } : undefined}
-    >
+    <nav className={`navbar ${scrolled ? "navbar-scrolled" : "navbar-top"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
+        <div className={`flex justify-between items-center transition-all duration-300 ${scrolled ? "py-3" : "py-5"}`}>
 
           {/* Logo */}
-          <Link
-            href="/"
-            className="logo-glow font-heading font-bold text-2xl tracking-tight"
-            style={{ color: "#FFFFFF" }}
-          >
+          <Link href="/" className="logo-glow font-heading font-bold text-2xl tracking-tight text-white">
             Samarth Strategies
           </Link>
 
@@ -47,17 +38,14 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-sans font-medium text-sm transition-colors duration-200"
-                style={{ color: "#AAAAAA" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#AAAAAA")}
+                className="nav-link font-sans font-medium text-sm"
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="btn-primary px-5 py-2.5 font-sans font-medium text-sm tracking-[0.05em] uppercase"
+              className="btn-primary px-5 py-2.5 font-sans font-semibold text-sm tracking-[0.05em] uppercase"
               style={{ borderRadius: "4px" }}
             >
               Get Free Audit
@@ -68,8 +56,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              style={{ color: "#FFFFFF" }}
-              className="focus:outline-none"
+              className="text-white focus:outline-none p-1"
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -80,17 +67,13 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div
-          className="md:hidden absolute w-full shadow-2xl"
-          style={{ background: "#0A0A0A", borderBottom: "1px solid #222222" }}
-        >
+        <div className="mobile-menu md:hidden absolute w-full shadow-2xl">
           <div className="px-4 pt-2 pb-6 flex flex-col space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="block px-3 py-3 font-sans font-medium transition-colors"
-                style={{ color: "#888888" }}
+                className="mobile-nav-link block px-3 py-3 font-sans font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
@@ -98,7 +81,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="btn-primary block px-3 py-3 mt-4 text-center font-sans font-medium tracking-[0.05em] uppercase"
+              className="btn-primary block px-3 py-3 mt-4 text-center font-sans font-semibold tracking-[0.05em] uppercase"
               style={{ borderRadius: "4px" }}
               onClick={() => setIsOpen(false)}
             >
